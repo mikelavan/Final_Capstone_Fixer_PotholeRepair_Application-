@@ -1,7 +1,44 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <navigation/>
+    <div class="nav">
+      <navigation 
+      name="Fixer"
+      :navLinks="[
+        {
+          name: 'Home',
+          link: '/home',
+
+        },
+
+{
+          name: 'Submit Pothole',
+          link: '/home',
+          dropdown: false,
+          
+        },
+        {
+          name: 'Review',
+          link: '/review',
+          dropdown: false,
+        },
+        {
+          name: 'Register',
+          link: '/register',
+          dropdown: false,
+        },
+        {
+          name: 'Login',
+          link: '/login',
+          dropdown: false,
+        },
+        {
+          name: 'Logout',
+          link: '/logout',
+          dropdown: false,
+        }
+          
+      ]"
+/>
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
@@ -18,3 +55,4 @@ export default {
   
 }
 </script>
+
