@@ -7,3 +7,7 @@ CREATE TABLE pothole_information (
         severity INT,
         picture VARCHAR(256)
 );
+
+INSERT INTO pothole_information (longitude, latitude, severity) VALUES (44.7128, 74.0060, 3);
+
+SELECT * FROM pothole_information;
