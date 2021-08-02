@@ -4,12 +4,16 @@ import com.techelevator.model.PotholeInformation;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component
 public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     private JdbcTemplate jdbcTemplate;
+
+//    public JdbcPotholeInformation(){};
 
     public JdbcPotholeInformation(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -17,12 +21,13 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     @Override
     public ArrayList<PotholeInformation> getPotholes() {
-        String sql = "SELECT * FROM pothole_information";
+        String sql = "SELECT id, date_created, longitude, latitude, severity FROM pothole_information";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         ArrayList<PotholeInformation> potholes = new ArrayList<>();
         try {
             while(result.next()) {
-                potholes.add(mapRowToPotholeInformation(result));
+                PotholeInformation potholeInformation = mapRowToPotholeInformation(result);
+                potholes.add(potholeInformation);
             }
         }  catch (DataAccessException ex) {
             System.out.println(ex.getMessage());
@@ -32,8 +37,8 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     private PotholeInformation mapRowToPotholeInformation(SqlRowSet row) {
         PotholeInformation potholes = new PotholeInformation();
-        potholes.setDateCreated(row.getDate("date_created").toLocalDate());
         potholes.setPotholeId(row.getInt("id"));
+        potholes.setDateCreated(row.getDate("date_created").toLocalDate());
         potholes.setLongitude(row.getDouble("longitude"));
         potholes.setLatitude(row.getDouble("latitude"));
         potholes.setSeverity(row.getInt("severity"));
