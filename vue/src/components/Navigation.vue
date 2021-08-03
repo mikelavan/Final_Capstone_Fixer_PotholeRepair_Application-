@@ -2,7 +2,6 @@ import treeNav from 'vue-tree-nav';
 
 <template>
  <nav>
-
     <div v-on:click="openMobileNav()" id="burger">
         <div class="line1"></div>
         <div class="line2"></div>
@@ -70,13 +69,17 @@ methods: {
 
 <style>
 
+body {
+ margin: 0px;
+}
+
 
 nav {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: #fe8888;
+    background-color: #DDA0DD;
     min-height: 8vh;
     font-family: 'Montserrat', sans-serif;
     
@@ -138,7 +141,7 @@ display: flex;
     padding: 100px;
     align-items: center;
     justify-content: flex-start;
-    background-color: #fe8888;
+    background-color: #DDA0DD;
     opacity: 0.9;
     transform: translateX(-100%);
     transition: transform 0.5s ease-in;
@@ -179,7 +182,7 @@ display: flex;
     padding: 100px;
     align-items: center;
     justify-content: flex-start;
-    background-color: #fe8888;
+    background-color: #DDA0DD;
     opacity: .95;
     transform: translateX(-100%);
     transition: transform 0.5s ease-in;
@@ -223,7 +226,7 @@ display: flex;
     padding: 100px;
     align-items: center;
     justify-content: flex-start;
-    background-color: #fe8888;
+    background-color: #DDA0DD;
     opacity: .9;
     transform: translateX(-100%);
     transition: transform 0.5s ease-in;
@@ -242,7 +245,7 @@ display: flex;
     z-index: 1;
   }
   div#logo {
-    width: 100%;
+    width: 150%;
     align-content: center;
     letter-spacing: 15px;
     color: #fefefe;
