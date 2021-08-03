@@ -4,7 +4,11 @@
 		
 			<div id="markers" v-for="marker in $store.state.potholes" :key="marker.id">
 				<map-marker :lat="marker.latitude" :lng="marker.longitude"></map-marker>
-				<map-info-window :lat="marker.latitude + .00001" :lng="marker.longitude">{{marker.severity}}</map-info-window>
+				<map-info-window :lat="marker.latitude + .00001" :lng="marker.longitude">
+					<a href="../../assets/640x360_placeholder.png" target="_blank"><img src="../../assets/640x360_placeholder.png" width="160" height="90"/></a><br/>
+					Date Reported: {{marker.dateCreated}}<br>
+					Pothole ID: {{marker.potholeId}}
+				</map-info-window>
 			</div>
 			
 			<!-- <map-info-window :lat="-23.344" :lng="129.036">
