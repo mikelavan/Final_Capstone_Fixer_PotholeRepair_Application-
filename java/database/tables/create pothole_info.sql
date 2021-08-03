@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS pothole_information;
+
 CREATE TABLE pothole_information (
         id SERIAL,
         date_created DATE NOT NULL DEFAULT CURRENT_DATE,
