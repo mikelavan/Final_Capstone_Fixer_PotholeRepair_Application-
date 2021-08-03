@@ -22,13 +22,7 @@ import treeNav from 'vue-tree-nav';
                 <a :href="list.link">
                     {{ list.name }}
                 </a>
-                <ul class="dropdown-menu">
-                 <li v-for="item in list.dropdownLinks" :key="item.key">
-                     <a :href="item.link">
-                         {{ item.name }}
-                    </a>
-                 </li>
-                </ul>
+                
             </div>
         </li>
     </ul>
@@ -86,99 +80,65 @@ nav {
     z-index: 2;
 }
 
-div#logo {
-letter-spacing: 5px;
-color: #fefefe;
-font-weight: 800;
-font-size: 2rem;
-
-}
-
-#burger {
-display: flex;
-cursor: pointer;
-}
-
-#burger div {
-display: flex;
-width: 30px;
-height: 3px;
-margin: 8px;
-background-color: #fefefe;
-transition: all 0.3s ease-in;
-
-}
-
-
-ul.nav-links {
-display: flex;
-justify-content: space-between;
-width: 40%;
-line-height: 75px;
-}
-
-ul.nav-links li {
-list-style: none;
-
-}
-
-ul.nav-links a {
-display: block;
-text-decoration: none;
-color: #fefefe;
-font-size: 1.2rem;
-font-weight: 500;
-display: flex;
-}
-
 @media only screen and (max-width:  1400px) {
-  ul.nav-links {
-    position: absolute;
-    flex-direction: column;
-    width: 25%;
-    height: auto;
-    top: 6vh;
-    right: 105%;
-    padding: 100px;
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
     background-color: #DDA0DD;
+    min-height: 8vh;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    z-index: 2;
+}
+  ul.nav-links {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 5%;
+    top: 3vh;
+    /* right: 105%; */
+    /* padding: 100px; */
+    justify-content: space-evenly;
+    /* background-color: #DDA0DD; */
     opacity: 0.9;
-    transform: translateX(-100%);
-    transition: transform 0.5s ease-in;
-    z-index: 1;
+    z-index: 4;
   }
   ul.nav-links li {
-    opacity: 0;
+    justify-content: flex-end;
+    display: flex;
+    opacity: 1;
+    /* margin: 0 35px; */
+    margin-left: 30px;
+
   }
   ul.nav-links a {
-    width: 100%;
-    margin: 20px;
+    display: flex;
+    /* margin: 10px; */
   }
-  div#burger {
-    display: block;
-    width: 40%;
-    padding: 25px;
-    position: relative;
-    z-index: 1;
-  }
+  
   div#logo {
-    width: 100%;
-    letter-spacing: 55px;
+    display: flex;
+    flex-basis: 25%;
+    /* width: 15%; */
+    justify-content: flex-start;
+    letter-spacing: 10px;
     color: #fefefe;
     font-weight: 800;
-    font-size: 4rem;
+    font-size: 3rem;
     z-index: 2;
 }
 
 }
 @media  only screen and (max-width: 767px) {
   ul.nav-links {
-     position: absolute;
+    position: absolute;
     flex-direction: column;
-    width: 25%;
+    width: 20%;
     height: auto;
-    top: -50px;
+    top: -40px;
     right: 105%;
     padding: 100px;
     align-items: center;
@@ -190,79 +150,57 @@ display: flex;
     z-index: 1;
   }
   ul.nav-links li {
-    opacity: 0;
     height: 60px;
+    justify-content: flex-end;
+    display: flex;
+    opacity: 1;
+    align-items: center;
     
   }
+
+  
   ul.nav-links a {
-    width: 100%;
+    text-decoration: none;
+    color: #fefefe;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
   }
   div#burger {
     display: block;
-    width: 50;
+    width: 40%;
+    padding: 25px;
     position: relative;
     z-index: 2;
   }
+
+ #burger div {
+  display: flex;
+  width: 30px;
+  height: 3px;
+  margin: 8px;
+  background-color: #fefefe;
+  transition: all 0.3s ease-in;
+}
+
+  #burger {
+  display: flex;
+  cursor: pointer;
+}
   div#logo {
     position: relative;
-    width: 140%;
+    width: 100%;
     align-content: center;
-    letter-spacing: 15px;
+    letter-spacing: 10px;
     color: #fefefe;
     font-weight: 800;
     font-size: 2rem;
     z-index: 2;
 
   }
+  
 
-  body {
- margin: -8px;
-}
-}
-
-@media  only screen and (max-width: 330px) {
-  ul.nav-links {
-    position: absolute;
-    flex-direction: column;
-    width: 25%;
-    height: auto;
-    top: -50px;
-    right: 105%;
-    padding: 100px;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: #DDA0DD;
-    opacity: .9;
-    transform: translateX(-100%);
-    transition: transform 0.5s ease-in;
-    z-index: 1;
-  }
-  ul.nav-links li {
-    opacity: 0;
-    height: 60px; 
-    width: 150%; 
-  }
-  ul.nav-links a {
-    width: 100%;
-  }
-  div#burger {
-    display: block;
-    z-index: 2;
-  }
-  div#logo {
-    width: 150%;
-    align-content: center;
-    letter-spacing: 15px;
-    color: #fefefe;
-    font-weight: 800;
-    font-size: 2rem;
-    z-index: 2;
-
-  }
-}
-
-
-.nav-active {
+  .nav-active {
   transform: translateX(75%) !important;
   
   
@@ -285,6 +223,82 @@ to {
     opacity: 1;
     transform: translateX(0px);
   }
+}
+
+  body {
+ margin: -8px;
+}
+
+
+}
+
+@media  only screen and (max-width: 330px) {
+  ul.nav-links {
+    position: absolute;
+    flex-direction: column;
+    width: 25%;
+    height: auto;
+    top: -50px;
+    right: 105%;
+    padding: 100px;
+    align-items: center;
+    justify-content: flex-stacrt;
+    background-color: #DDA0DD;
+    opacity: .9;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in;
+    z-index: 1;
+  }
+  ul.nav-links li {
+    display: flex;
+    justify-content: flex-end;
+    opacity: 1;
+    height: 60px; 
+    align-items: center;
+  }
+  ul.nav-links a {
+    display: block;
+    width: 100%;
+  }
+  div#burger {
+    display: block;
+    z-index: 2;
+  }
+  div#logo {
+    width: 150%;
+    align-content: center;
+    letter-spacing: 10px;
+    color: #fefefe;
+    font-weight: 800;
+    font-size: 2rem;
+    z-index: 2;
+
+  }
+
+  .nav-active {
+  transform: translateX(75%) !important;
+  
+  
+}
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-9px, 10px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
 }
 
 

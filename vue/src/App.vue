@@ -7,13 +7,13 @@
 
         {
           name: 'Home',
-          link: '/home',
+          link: '/',
 
         },
 
         {
           name: 'Create',
-          link: '/home',
+          link: '/',
           dropdown: false,          
         },
           
