@@ -20,7 +20,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    potholes: []
+    potholes: [],
+    newReport: {},
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -41,6 +42,14 @@ export default new Vuex.Store({
     },
     ADD_POTHOLES(state, data) {
       state.potholes = data;
+    },
+    DELETE_POTHOLE(state, data) {
+      state.potholes = state.potholes.filter((pothole) => {
+        return pothole.id !== data;
+      })
+    },
+    ADD_REPORT(state, data) {
+      state.newReport = data;
     }
   }
 })

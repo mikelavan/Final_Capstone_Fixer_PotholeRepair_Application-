@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../store/index'
 
 export default{
     
@@ -10,7 +11,8 @@ export default{
         return axios.delete(`/potholes/${id}`)
     },
 
-    createReport(data) {
-        return axios.post('/potholes', data)
+    createReport() {
+        console.log(store.state.newReport);
+        return axios.post('/potholes', store.state.newReport)
     }
 }
