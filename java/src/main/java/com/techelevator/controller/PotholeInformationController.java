@@ -24,6 +24,7 @@ public class PotholeInformationController {
 
     @RequestMapping(path="/potholes", method = RequestMethod.GET)
     public ArrayList<PotholeInformation> listPotholes() {
-        return jdbcPotholeInformation.getPotholes();
+        ArrayList<PotholeInformation> potholes = jdbcPotholeInformation.getPotholes();
+        return potholes;
     }
 }

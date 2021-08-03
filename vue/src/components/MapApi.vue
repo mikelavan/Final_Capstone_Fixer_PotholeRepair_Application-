@@ -1,8 +1,10 @@
 <template>
-  <div id="map" ref="map">
-			<div id="markers" v-for="marker in markers" :key="marker.id">
+<div>
+	<div id="map" ref="map">
+		
+			<div id="markers" v-for="marker in $store.state.potholes" :key="marker.id">
 				<map-marker :lat="marker.latitude" :lng="marker.longitude"></map-marker>
-				<map-info-window :lat="marker.latitude + .2" :lng="marker.longitude">Test 1</map-info-window>
+				<map-info-window :lat="marker.latitude + .00001" :lng="marker.longitude">{{marker.severity}}</map-info-window>
 			</div>
 			
 			<!-- <map-info-window :lat="-23.344" :lng="129.036">
@@ -15,11 +17,13 @@
 				/>
 			</map-info-window> -->
 		</div>
+</div>
 </template>
 
 <script>
 	import MapMarker from "../components/MapMarker"
 	import MapInfoWindow from "../components/MapInfoWindow"
+	import PotholeService from "../services/PotholeService"
 
 	export default {
 		components: {
@@ -43,6 +47,15 @@
 				}
 			],
 		}),
+		created() {
+			PotholeService.list().then( (response) => {
+				this.$store.commit("ADD_POTHOLES", response.data);
+			}).catch(error => {
+				if(error.response.status == 400) {
+					console.log(error.response.status);
+				}
+			});
+		},
 		methods: {
 			getMap(callback) {
 				let vm = this
@@ -51,12 +64,12 @@
 					else setTimeout(checkForMap, 200)
 				}
 				checkForMap()
-			}
+			},
 		},
 		mounted() {
 			this.map = new window.google.maps.Map(this.$refs["map"], {
-				center: { lat: -23.444, lng: 129.036 },
-				zoom: 7
+				center: { lat: 39.952465, lng: -75.164062 },
+				zoom: 15
 			})
 		}
 	}
@@ -67,6 +80,8 @@
        * element that contains the map. */
 #map {
 		height: 600px;
-		background: gray;
+		background: gray; 
+		position: relative;
+		z-index: 1;
 	}
 </style>
