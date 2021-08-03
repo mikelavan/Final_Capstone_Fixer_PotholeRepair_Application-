@@ -78,11 +78,10 @@ export default {
 <style scoped>
 
 
-@media only screen and (max-width: 1400px) {
 
 
   .text-center {
-  display: grid;
+  display: flex;
   background-color: #FFFFFF;
   border-radius: 2.5em;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
@@ -153,7 +152,7 @@ h1 {
         color: #E1BEE7;
         padding-top: 15px;
     }
-} 
+
 
 
 

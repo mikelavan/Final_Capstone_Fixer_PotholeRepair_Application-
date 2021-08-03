@@ -102,7 +102,6 @@ export default {
         
 h1 {
   display: flex;
-  width: 100%;
   justify-content: center;
   padding-top: 40px;
   color: #8C55AA;
