@@ -87,7 +87,7 @@ nav {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #0a020a;
+    background-color: #DDA0DD;
     min-height: 8vh;
     font-family: 'Montserrat', sans-serif;
     position: relative;
