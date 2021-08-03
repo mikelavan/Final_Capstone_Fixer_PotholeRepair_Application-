@@ -4,19 +4,21 @@
       <navigation 
       name="Fixer"
       :navLinks="[
+
         {
           name: 'Home',
           link: '/home',
 
         },
 
-{
-          name: 'Submit Pothole',
-          link: '/home',
-          dropdown: false,
-          
-        },
         {
+          name: 'Create',
+          link: '/home',
+          dropdown: false,          
+        },
+
+        {
+          
           name: 'Review',
           link: '/review',
           dropdown: false,
@@ -37,8 +39,8 @@
           dropdown: false,
         }
           
-      ]"
-/>
+       ]"
+      />
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
