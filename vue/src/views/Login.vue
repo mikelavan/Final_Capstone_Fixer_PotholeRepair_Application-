@@ -74,3 +74,17 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+.text-center {
+  display: flex;
+}
+
+
+
+
+
+
+
+</style>
