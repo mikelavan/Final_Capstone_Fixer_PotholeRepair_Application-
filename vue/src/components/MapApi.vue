@@ -18,8 +18,8 @@
 </template>
 
 <script>
-  import MapMarker from "@/components/MapMarker"
-	import MapInfoWindow from "@/components/MapInfoWindow"
+	import MapMarker from "../components/MapMarker"
+	import MapInfoWindow from "../components/MapInfoWindow"
 
 	export default {
 		components: {
