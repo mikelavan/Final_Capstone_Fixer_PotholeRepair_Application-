@@ -174,6 +174,7 @@ h1 {
   border-radius: 1.5em;
   z-index: 0;
   padding-bottom: -20%;
+  height: 100vh;
 }
 
 

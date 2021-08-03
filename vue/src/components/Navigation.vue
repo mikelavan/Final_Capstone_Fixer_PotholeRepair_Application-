@@ -76,18 +76,18 @@ nav {
     background-color: #DDA0DD;
     min-height: 8vh;
     font-family: 'Montserrat', sans-serif;
-    position: relative;
+    position: fixed;
     z-index: 2;
 }
 
-@media only screen and (max-width:  1400px) {
+@media only screen and (max-width: 3440px) {
 
 nav {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #DDA0DD;
+    background-color: #0a020a;
     min-height: 8vh;
     font-family: 'Montserrat', sans-serif;
     position: relative;
@@ -137,7 +137,7 @@ nav {
     position: absolute;
     flex-direction: column;
     width: 20%;
-    height: auto;
+    height: 100vh;
     top: -40px;
     right: 105%;
     padding: 100px;
@@ -237,7 +237,7 @@ to {
     position: absolute;
     flex-direction: column;
     width: 25%;
-    height: auto;
+    height: 100vh;
     top: -50px;
     right: 105%;
     padding: 100px;
