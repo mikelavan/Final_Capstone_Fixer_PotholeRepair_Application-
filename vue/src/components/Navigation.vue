@@ -65,6 +65,7 @@ methods: {
 
 body {
  margin: 0px;
+ padding: 0px;
 }
 
 
@@ -76,7 +77,7 @@ nav {
     background-color: #DDA0DD;
     min-height: 8vh;
     font-family: 'Montserrat', sans-serif;
-    position: fixed;
+    position: relative;
     z-index: 2;
 }
 
