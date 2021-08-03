@@ -35,6 +35,18 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
         return potholes;
     }
 
+    @Override
+    public void deletePothole(int id) {
+        String sql = "DELETE FROM pothole_information WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+    @Override
+    public void createReport(PotholeInformation pothole) {
+        String sql = "INSERT INTO pothole_information (longitude, latitude) VALUES (?, ?);";
+        jdbcTemplate.update(sql, pothole.getLongitude(), pothole.getLatitude());
+    }
+
     private PotholeInformation mapRowToPotholeInformation(SqlRowSet row) {
         PotholeInformation potholes = new PotholeInformation();
         potholes.setPotholeId(row.getInt("id"));

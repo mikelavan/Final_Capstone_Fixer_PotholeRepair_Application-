@@ -5,9 +5,11 @@
 			<div id="markers" v-for="marker in $store.state.potholes" :key="marker.id">
 				<map-marker :lat="marker.latitude" :lng="marker.longitude"></map-marker>
 				<map-info-window :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<a href="../../assets/640x360_placeholder.png" target="_blank"><img src="../../assets/640x360_placeholder.png" width="160" height="90"/></a><br/>
+					<img src="../../assets/640x360_placeholder.png" width="160" height="90"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
-					Pothole ID: {{marker.potholeId}}
+					Pothole ID: {{marker.potholeId}}<br>
+					<button v-on:click="deletePothole(marker.potholeId)" 
+					v-show="$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')">Delete</button>
 				</map-info-window>
 			</div>
 			
@@ -28,6 +30,7 @@
 	import MapMarker from "../components/MapMarker"
 	import MapInfoWindow from "../components/MapInfoWindow"
 	import PotholeService from "../services/PotholeService"
+	
 
 	export default {
 		components: {
@@ -36,20 +39,12 @@
 		},
 		data: () => ({
 			map: null,
-			markers: [
-				{
-					latitude: -27.344,
-					longitude: 133.036
-				},
-				{
-					latitude: -26.344,
-					longitude: 132.036
-				},
-				{
-					latitude: -25.344,
-					longitude: 131.036
-				}
-			],
+			markers: [],
+			newReportMarker: {
+				latitude: null,
+				longitude: null,
+				//img
+			},
 		}),
 		created() {
 			PotholeService.list().then( (response) => {
@@ -69,12 +64,64 @@
 				}
 				checkForMap()
 			},
+			deletePothole(id) {
+				PotholeService.deletePothole(id).then(response => {
+					this.$store.commit("DELETE_POTHOLE", response);
+					location.reload();
+				}).catch(error => {
+					if(error.response.status == 400) {
+						console.log(error.response.status);
+					}
+				});
+			},
+			placeMarker(location) {
+				new window.google.maps.Marker({
+					position: location, 
+					map: this.map
+				});
+			},
+			createReport() {
+				alert('wow');
+				PotholeService.createReport(this.newReportMarker).then(() => {
+					location.reload();
+				}).catch(error => {
+					if(error.response) {
+						console.log('Error submitting new report.');
+					} else if (error.request) {
+						console.log("Error submitting new board. Server could not be reached.");
+					} else {
+						console.log("Error submitting new board. Request could not be created.");
+					}
+				})
+			}
 		},
 		mounted() {
 			this.map = new window.google.maps.Map(this.$refs["map"], {
 				center: { lat: 39.952465, lng: -75.164062 },
 				zoom: 15
-			})
+			});
+			let infoWindow = new window.google.maps.InfoWindow({
+				content: "Click the map to get Lat/Lng!",
+				position: this.map.center,
+			});
+			infoWindow.open(this.map);
+			this.map.addListener('click', (event) => {
+				infoWindow.close();
+				let loc = JSON.stringify(event.latLng.toJSON());
+				//changes JSON to array to access and save in dummy var
+				let locArray = JSON.parse(loc);
+				this.newReportMarker.latitude = locArray.lat;
+				this.newReportMarker.longitude = locArray.lng;
+				// alert(event.latLng);
+				let contentString = "<span style='font-size: 24px;'>Would you like to submit this pothole report?</span><br>" + 
+				"<button onclick='createReport();'>Submit</button>";
+				infoWindow = new window.google.maps.InfoWindow({
+					content: contentString,
+					position: event.latLng,
+				});
+				
+				infoWindow.open(this.map);
+			});
 		}
 	}
 </script>

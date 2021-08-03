@@ -4,11 +4,10 @@ import com.techelevator.dao.JdbcPotholeInformation;
 import com.techelevator.dao.PotholeInformationDAO;
 import com.techelevator.model.PotholeInformation;
 import com.techelevator.services.PotholeInformationService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 @CrossOrigin
@@ -26,5 +25,17 @@ public class PotholeInformationController {
     public ArrayList<PotholeInformation> listPotholes() {
         ArrayList<PotholeInformation> potholes = potholeService.list();
         return potholes;
+    }
+
+    @RequestMapping(path="/potholes/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('ADMIN')")
+    public void deletePothole(@PathVariable int id) {
+        potholeService.delete(id);
+    }
+
+    @RequestMapping(path="/potholes", method = RequestMethod.POST)
+//    @PreAuthorize("hasRole('ADMIN')")
+    public void createReport(@Valid @RequestBody PotholeInformation pothole) {
+        potholeService.create(pothole);
     }
 }

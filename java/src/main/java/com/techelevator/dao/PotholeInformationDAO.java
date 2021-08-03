@@ -6,4 +6,8 @@ import java.util.ArrayList;
 
 public interface PotholeInformationDAO {
     ArrayList<PotholeInformation> getPotholes();
+
+    void deletePothole(int id);
+
+    void createReport(PotholeInformation pothole);
 }
