@@ -79,7 +79,8 @@ nav {
     background-color: #fe8888;
     min-height: 8vh;
     font-family: 'Montserrat', sans-serif;
-    
+    position: relative;
+    z-index: 2;
 }
 
 div#logo {

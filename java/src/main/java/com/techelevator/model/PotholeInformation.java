@@ -12,7 +12,8 @@ public class PotholeInformation {
     // private String pictureUrl;
     // private String address;
 
-    public int getPotholeId(int id) {
+
+    public int getPotholeId() {
         return potholeId;
     }
 
@@ -28,7 +29,7 @@ public class PotholeInformation {
         this.severity = severity;
     }
 
-    public LocalDate getDateCreated(Date date_created) {
+    public LocalDate getDateCreated() {
         return dateCreated;
     }
 
