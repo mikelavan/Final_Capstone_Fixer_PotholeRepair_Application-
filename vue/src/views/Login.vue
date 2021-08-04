@@ -82,15 +82,16 @@ export default {
 
   .text-center {
   display: flex;
-  background-color: #FFFFFF;
-  border-radius: 2.5em;
+  background-color: #FDF5E6;
+  border-radius: 1.5em;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
   z-index: 0;
+  overflow: hidden;
 }
         
 h1 {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   justify-content: center;
   padding-top: 40px;
   color: #8C55AA;
@@ -137,7 +138,7 @@ h1 {
         padding-bottom: 10px;
         padding-top: 10px;
         font-family: 'Ubuntu', sans-serif;
-        margin-left: 35%;
+        margin-left: 30%;
         font-size: 13px;
         box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
         margin-bottom: 35%;
@@ -149,11 +150,77 @@ h1 {
   justify-content: center;
   padding: 50px;
   text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-        color: #E1BEE7;
+        color: #DDA0DD;
         padding-top: 15px;
     }
 
 
+@media  only screen and (min-width: 767px) {
+  .text-center {
+  display: grid; 
+  background-color: #FDF5E6;
+  border-radius: 1.5em;
+  z-index: 0;
+  padding-bottom: -20%;
+  height: 100vh;
+}
+
+
+h1 {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  color: #8C55AA;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  margin-bottom: 5% ;
+
+}
+
+.form-control {
+  width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    width: 93%;
+
+}
+
+.needAccount {
+
+  cursor: pointer;
+      border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 30%;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        margin-bottom: 35%;
+        width: 40%;
+
+}
+
+}
 
 
     
