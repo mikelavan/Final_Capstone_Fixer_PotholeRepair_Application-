@@ -80,7 +80,6 @@ export default {
 <style scoped>
 
 
-
 #login {
   margin: 0 auto;
 }
@@ -93,7 +92,7 @@ export default {
   background-color: #FDF5E6;
   border-radius: 1.5em;
   z-index: 0;
-  padding-bottom: 20%;
+  /* padding-bottom: 5%; */
   height: 100vh;
 }
 
