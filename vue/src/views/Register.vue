@@ -143,7 +143,7 @@ h1 {
     display: flex;
   justify-content: center;
   padding: 30px;
-  padding-top: 15px;
+  padding-top: 30px;
   text-align: center;
 
 }
