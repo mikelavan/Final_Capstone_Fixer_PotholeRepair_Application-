@@ -95,12 +95,14 @@ export default {
     .text-center {
   display: flex;
   background-color: #FDF5E6;
-  /* box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14); */
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
   z-index: 0;
-  /* padding-bottom: 20px; */
+  padding-bottom: 20px;
   overflow: hidden;
   height: 110vh
 }
+
+
         
 h1 {
   display: flex;
@@ -126,7 +128,7 @@ h1 {
     border-radius: 20px;
     outline: none;
     box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0.02);
+    border: 5px solid rgba(0, 0, 0, 0.02);
     margin-bottom: 50px;
     margin-left: 46px;
     text-align: center;
@@ -137,6 +139,7 @@ h1 {
 
 .form-control:focus {
   border: 2px solid rgba(0, 0, 0, 0.18) !important;
+  
 
 }
 

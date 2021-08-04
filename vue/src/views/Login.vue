@@ -114,7 +114,7 @@ h1 {
     border-radius: 20px;
     outline: none;
     box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0.02);
+    border: 5px solid rgba(0, 0, 0, 0.02);
     margin-bottom: 50px;
     margin-left: 46px;
     text-align: center;
@@ -139,7 +139,7 @@ h1 {
         padding-bottom: 10px;
         padding-top: 10px;
         font-family: 'Ubuntu', sans-serif;
-        margin-left: 30%;
+        margin-left: 35%;
         font-size: 13px;
         box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
         margin-bottom: 35%;
@@ -151,8 +151,8 @@ h1 {
   justify-content: center;
   padding: 50px;
   text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-        color: #DDA0DD;
-        padding-top: 15px;
+  color: #DDA0DD;
+  padding-top: 15px;
     }
 
 
@@ -225,7 +225,28 @@ h1 {
 
 }
 
+@media  only screen and (max-width: 330px) {
+
+
+  .sign-in {
+  cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 33%;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        margin-bottom: 35%;
+
+}
+
 
     
-
+}
 </style>
