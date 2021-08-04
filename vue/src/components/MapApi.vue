@@ -137,6 +137,7 @@
 					infoWindow = new window.google.maps.InfoWindow({
 						content: contentString,
 						position: event.latLng,
+						ZIndex: 99
 					});
 				}
 				
