@@ -50,6 +50,10 @@
 				longitude: null,
 				//img
 			},
+			currentPosition: {
+				lat: null,
+				lng: null
+			}
 		}),
 		created: function() {
 			PotholeService.list().then( (response) => {
@@ -100,14 +104,56 @@
 					console.log("Error submitting new board. Request could not be created.");
 				}
 			})
+			},
+			getLocation() {
+				alert('works');
+				navigator.geolocation.getCurrentPosition(position => {
+					console.log('test');
+					this.currentPosition = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					};
+				});
+			},
+			handleLocationError(browserHasGeolocation, infoWindow, pos) {
+				infoWindow.setPosition(pos);
+				infoWindow.setContent(
+					browserHasGeolocation
+					? "Error: The Geolocation service failed."
+					: "Error: Your browser doesn't support geolocation."
+				);
+				infoWindow.open(this.map);
+			},
+			showPosition(position) {
+				console.log("Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude);
+				this.currentPosition = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				}
+				this.setPosition();
+			},
+			setPosition() {
+				this.map = new window.google.maps.Map(this.$refs["map"], {
+					center: { lat: this.currentPosition.lat, lng: this.currentPosition.lng },
+					zoom: 15
+				});
 			}
 			
 		},
 		mounted() {
-			this.map = new window.google.maps.Map(this.$refs["map"], {
-				center: { lat: 39.952465, lng: -75.164062 },
-				zoom: 15
-			});
+			
+
+			if(navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(this.showPosition);
+			} else {
+				this.map = new window.google.maps.Map(this.$refs["map"], {
+					center: { lat: 39.952465, lng: -75.164062 },
+					zoom: 15
+				});
+				console.log('not supported');
+			}
+
 			let infoWindow = null;
 			if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')) {
 				infoWindow = new window.google.maps.InfoWindow({

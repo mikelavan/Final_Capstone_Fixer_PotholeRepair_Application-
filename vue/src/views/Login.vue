@@ -77,7 +77,9 @@ export default {
 
 <style scoped>
 
-
+#login {
+  margin: 0 auto;
+}
 
 
   .text-center {
