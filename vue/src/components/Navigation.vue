@@ -7,7 +7,7 @@ import treeNav from 'vue-tree-nav';
         <div class="line2"></div>
         <div class="line3"></div>
     </div>
-    <div v-if="name" id="logo">
+    <div v-on:click="navToLogin()" v-if="name" id="logo">
          {{ name }}
     </div>
     <div v-else id="logo">
@@ -35,27 +35,35 @@ export default {
     name: 'Navbar',
 props: ['name', 'logoImg', 'navLinks'],
 methods: {
+
     openMobileNav() {
     const burger = document.getElementById('burger')
     const nav = document.querySelector('.nav-links')
-    const navLinks = document.querySelectorAll('.nav-links li')
+    // const navLinks = document.querySelectorAll('.nav-links li')
 // Toggle navigation on mobile
     nav.classList.toggle('nav-active')
     // Burger toggler
     burger.classList.toggle('toggle')
 // Animate navigation links
-    navLinks.forEach((link, index) => {
-        if (link.style.animation || link.style.webkitAnimation) {
-            link.style.animation = ''
-            link.style.webkitAnimation = ''
-        } else {
-            link.style.webkitAnimation = `navLinkFade 0.5s ease forwards ${
-            index / 7
-          }s`
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7}s`
-        }
-        })
-    }       
+    // navLinks.forEach((link, index) => {
+
+    //     if (link.style.animation || link.style.webkitAnimation) {
+    //         link.style.animation = ''
+    //         link.style.webkitAnimation = ''
+    //     } else {
+    //         link.style.webkitAnimation = `navLinkFade 0.5s ease forwards ${
+    //         index / 7
+    //       }s`
+    //         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7}s`
+    //     }
+        
+    //     })
+    },
+    
+    navToLogin() {
+      this.$router.push({ name: 'Login' });
+    }
+          
     }
 }
 
@@ -126,6 +134,7 @@ nav {
   }
   
   div#logo {
+    cursor: pointer;
     display: flex;
     flex-basis: 25%;
     /* width: 15%; */
