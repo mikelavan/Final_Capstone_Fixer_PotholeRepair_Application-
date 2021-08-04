@@ -95,11 +95,11 @@ export default {
     .text-center {
   display: flex;
   background-color: #FDF5E6;
-  border-radius: 1.5em;
   /* box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14); */
   z-index: 0;
   /* padding-bottom: 20px; */
   overflow: hidden;
+  height: 110vh
 }
         
 h1 {
@@ -110,6 +110,7 @@ h1 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
+  margin-top: 25%;
 
 }
 
@@ -187,6 +188,8 @@ h1 {
   font-weight: bold;
   font-size: 23px;
   margin-bottom: 5% ;
+  margin-top: 8%;
+
 
 }
 
@@ -232,6 +235,42 @@ h1 {
 
 }
 
+
+}
+
+@media  only screen and (max-width: 330px) {
+
+  h1 {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  color: #8C55AA;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  margin-bottom: 5% ;
+  margin-top: 35%;
+
+  }
+.createAcnt {
+
+  cursor: pointer;
+      border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 30%;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        margin-bottom: 35%;
+        width: 40%;
+
+}
 
 }
 

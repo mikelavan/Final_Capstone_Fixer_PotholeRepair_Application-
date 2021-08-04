@@ -70,6 +70,7 @@ body {
 
 
 nav {
+    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -98,34 +99,37 @@ nav {
   ul.nav-links {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 75%;
     height: 5%;
     top: 3vh;
-    /* right: 105%; */
-    /* padding: 100px; */
     justify-content: space-evenly;
-    /* background-color: #DDA0DD; */
-    opacity: 0.9;
+    opacity: 1;
     z-index: 4;
+    font-size: 25px;
+    gap: 5px;
+    margin-right: auto;
   }
   ul.nav-links li {
     justify-content: flex-end;
     display: flex;
     opacity: 1;
-    /* margin: 0 35px; */
-    margin-left: 30px;
 
   }
   ul.nav-links a {
     display: flex;
-    /* margin: 10px; */
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: #fefefe;
+
+
+  
   }
   
   div#logo {
     display: flex;
     flex-basis: 25%;
     /* width: 15%; */
-    justify-content: flex-start;
+    justify-content: center;
     letter-spacing: 10px;
     color: #fefefe;
     font-weight: 800;
@@ -134,7 +138,21 @@ nav {
 }
 
 }
-@media  only screen and (max-width: 767px) {
+@media  only screen and (max-width: 768px) {
+
+  nav {
+
+    display: flex;
+    width: 105%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #DDA0DD;
+    min-height: 8vh;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    z-index: 2;
+  }
   ul.nav-links {
     position: absolute;
     flex-direction: column;
@@ -157,6 +175,7 @@ nav {
     display: flex;
     opacity: 1;
     align-items: center;
+    margin-left: 50px;
     
   }
 
@@ -235,6 +254,21 @@ to {
 }
 
 @media  only screen and (max-width: 330px) {
+
+  nav {
+
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #DDA0DD;
+    min-height: 8vh;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    z-index: 2;
+  }
+
   ul.nav-links {
     position: absolute;
     flex-direction: column;
