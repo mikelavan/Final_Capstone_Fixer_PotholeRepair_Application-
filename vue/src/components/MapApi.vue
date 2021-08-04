@@ -5,7 +5,7 @@
 			<div id="markers" v-for="marker in $store.state.potholes" :key="marker.id">
 				<map-marker :lat="marker.latitude" :lng="marker.longitude"></map-marker>
 				<map-info-window :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/640x360_placeholder.png" width="160" height="90"/><br/>
+					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					<button v-on:click="deletePothole(marker.potholeId)" 
@@ -53,7 +53,9 @@
 			currentPosition: {
 				lat: null,
 				lng: null
-			}
+			},
+			lat: null,
+			lng: null,
 		}),
 		created: function() {
 			PotholeService.list().then( (response) => {
@@ -92,7 +94,6 @@
 				});
 			},
 			createReport() {
-				alert('wow 3');
 				PotholeService.createReport(this.newReportMarker).then(() => {
 				location.reload();
 			}).catch(error => {
@@ -125,34 +126,31 @@
 				infoWindow.open(this.map);
 			},
 			showPosition(position) {
-				console.log("Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude);
-				this.currentPosition = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				}
-				this.setPosition();
+                this.currentPosition = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                }
+                this.setPosition();
 			},
 			setPosition() {
 				this.map = new window.google.maps.Map(this.$refs["map"], {
-					center: { lat: this.currentPosition.lat, lng: this.currentPosition.lng },
-					zoom: 15
-				});
+                    center: { lat: this.currentPosition.lat, lng: this.currentPosition.lng },
+                    zoom: 15
+                });
 			}
 			
 		},
 		mounted() {
-			
-
 			if(navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(this.showPosition);
-			} else {
-				this.map = new window.google.maps.Map(this.$refs["map"], {
-					center: { lat: 39.952465, lng: -75.164062 },
-					zoom: 15
-				});
-				console.log('not supported');
-			}
+                navigator.geolocation.getCurrentPosition(this.showPosition);
+            } else {
+                this.map = new window.google.maps.Map(this.$refs["map"], {
+                    center: { lat: 39.952465, lng: -75.164062 },
+                    zoom: 15
+                });
+                console.log('not supported');
+            }
+			
 
 			let infoWindow = null;
 			if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')) {
@@ -160,14 +158,17 @@
 					content: "<span style='font-size: 24px;'>Click the map to report a pothole!</span>",
 					position: this.map.center,
 				});
+				console.log(this.map.center);
 			} else {
 				infoWindow = new window.google.maps.InfoWindow({
 					content: "<span style='font-size: 24px;'>Click the map to report a pothole! You must be logged in.</span>",
 					position: this.map.center,
 				});
+				
 			}
 			infoWindow.open(this.map);
 			this.map.addListener('click', (event) => {
+				alert('click');
 				infoWindow.close();
 				let loc = JSON.stringify(event.latLng.toJSON());
 				//changes JSON to array to access and save in dummy var
