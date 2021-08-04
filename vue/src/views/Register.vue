@@ -32,7 +32,9 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }" class="haveAcnt">Have an account?</router-link>
+      <div class = "haveAcnt">
+        <router-link :to="{ name: 'login' }" id="haveAcntBtn">Have an account?</router-link>
+      </div>
       <button class="createAcnt" type="submit">
         Create Account
       </button>
@@ -92,14 +94,19 @@ export default {
 
 <style>
 
+
+
+@media  only screen and (max-width: 766px) {
+
     .text-center {
   display: flex;
+  justify-content: center;
   background-color: #FDF5E6;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
   z-index: 0;
   padding-bottom: 20px;
   overflow: hidden;
-  height: 110vh
+  height: 110vh;
 }
 
 
@@ -112,28 +119,32 @@ h1 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
-  margin-top: 25%;
+  margin-top: 35%;
 
 }
 
 .form-control {
-  width: 76%;
+  /* width: 93%; */
     color: rgb(38, 50, 56);
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 1px;
     background: rgba(136, 126, 126, 0.04);
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     box-sizing: border-box;
+    height: 1px;
     border: 5px solid rgba(0, 0, 0, 0.02);
+    margin-top: 15%;
     margin-bottom: 50px;
-    margin-left: 46px;
-    text-align: center;
-    margin-bottom: 27px;
     font-family: 'Ubuntu', sans-serif;
+    display: flex;
+  justify-content: center;
+  padding: 30px;
+  padding-top: 15px;
+  text-align: center;
 
 }
 
@@ -144,21 +155,20 @@ h1 {
 }
 
 .createAcnt {
-
+  display: flex;
+  justify-content: center;
   cursor: pointer;
-      border-radius: 5em;
-        color: #fff;
-        background: linear-gradient(to right, #9C27B0, #E040FB);
-        border: 0;
-        padding-left: 40px;
-        padding-right: 40px;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        font-family: 'Ubuntu', sans-serif;
-        margin-left: 30%;
-        font-size: 13px;
-        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-        margin-bottom: 35%;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  padding-top: 12px;
+  width: 100%;
+  height: 6%;
 
 }
 
@@ -167,17 +177,24 @@ h1 {
   justify-content: center;
   padding: 50px;
   text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-        color: #DDA0DD;
-        padding-top: 15px;
+  color: #DDA0DD;
+  padding-top: 15px;
     }
-
-@media  only screen and (min-width: 767px) {
+#haveAcntBtn {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #DDA0DD;
+  text-decoration: none;
+}
+    
+}
+@media  only screen and (min-width: 765px) {
   .text-center {
-  display: grid; 
+  display: flex; 
+  justify-content: center ;
   background-color: #FDF5E6;
   border-radius: 1.5em;
   z-index: 0;
-  padding-bottom: -20%;
+  padding-bottom: 20%;
   height: 100vh;
 }
 
@@ -189,59 +206,94 @@ h1 {
   color: #8C55AA;
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
-  font-size: 23px;
+  font-size: 35;
   margin-bottom: 5% ;
-  margin-top: 8%;
+  margin-top: 40%;
 
 
 }
 
 .form-control {
-  width: 76%;
+  /* width: 93%; */
     color: rgb(38, 50, 56);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 14px;
     letter-spacing: 1px;
     background: rgba(136, 126, 126, 0.04);
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0.02);
+    height: 1px;
+    border: 5px solid rgba(0, 0, 0, 0.02);
     margin-bottom: 50px;
-    margin-left: 46px;
-    text-align: center;
-    margin-bottom: 27px;
     font-family: 'Ubuntu', sans-serif;
-    width: 93%;
+    display: flex;
+  justify-content: center;
+  padding: 30px;
+  padding-top: 20px;
+  text-align: center;
+  margin-top: 30%;
+
+}
+
+.form-control:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+  
 
 }
 
 .createAcnt {
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-      border-radius: 5em;
-        color: #fff;
-        background: linear-gradient(to right, #9C27B0, #E040FB);
-        border: 0;
-        padding-left: 40px;
-        padding-right: 40px;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        font-family: 'Ubuntu', sans-serif;
-        margin-left: 30%;
-        font-size: 13px;
-        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-        margin-bottom: 35%;
-        width: 40%;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  /* padding-top: 1; */
+  width: 100%;
+  height: 7%;
 
+}
+
+.haveAcnt {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #DDA0DD;
+  padding-top: 15px;
+    }
+
+#haveAcntBtn {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #DDA0DD;
+  text-decoration: none;
 }
 
 
 }
 
 @media  only screen and (max-width: 330px) {
+
+  .text-center {
+  display: flex;
+  justify-content: center;
+  background-color: #FDF5E6;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  z-index: 0;
+  padding-bottom: 20px;
+  overflow: hidden;
+  height: 100%;
+}
 
   h1 {
   display: flex;
@@ -256,24 +308,24 @@ h1 {
 
   }
 .createAcnt {
-
+  display: flex;
+  justify-content: center;
   cursor: pointer;
-      border-radius: 5em;
-        color: #fff;
-        background: linear-gradient(to right, #9C27B0, #E040FB);
-        border: 0;
-        padding-left: 40px;
-        padding-right: 40px;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        font-family: 'Ubuntu', sans-serif;
-        margin-left: 30%;
-        font-size: 13px;
-        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-        margin-bottom: 35%;
-        width: 40%;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  margin-bottom: 35%;
+  box-sizing: border-box;
+  padding-top: 12px;
+  width: 100%;
+  height: 6%;
 
 }
+
 
 }
 

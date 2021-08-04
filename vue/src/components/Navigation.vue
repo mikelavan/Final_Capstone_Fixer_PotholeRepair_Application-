@@ -105,7 +105,7 @@ nav {
     justify-content: space-evenly;
     opacity: 1;
     z-index: 4;
-    font-size: 25px;
+    font-size: 16px;
     gap: 5px;
     margin-right: auto;
   }
