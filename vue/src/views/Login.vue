@@ -176,6 +176,7 @@ h1 {
   font-weight: bold;
   font-size: 23px;
   margin-bottom: 5% ;
+  margin-top: 8%;
 
 }
 
