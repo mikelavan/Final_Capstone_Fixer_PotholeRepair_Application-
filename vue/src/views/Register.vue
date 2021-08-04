@@ -124,13 +124,11 @@ h1 {
 }
 
 .form-control {
-  /* width: 93%; */
     color: rgb(38, 50, 56);
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 1px;
     background: rgba(136, 126, 126, 0.04);
-    /* padding: 10px 20px; */
     border: none;
     border-radius: 10px;
     outline: none;
