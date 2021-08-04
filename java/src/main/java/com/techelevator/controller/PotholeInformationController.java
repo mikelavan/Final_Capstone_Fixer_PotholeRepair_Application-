@@ -34,7 +34,7 @@ public class PotholeInformationController {
     }
 
     @RequestMapping(path="/potholes", method = RequestMethod.POST)
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void createReport(@Valid @RequestBody PotholeInformation pothole) {
         potholeService.create(pothole);
     }
