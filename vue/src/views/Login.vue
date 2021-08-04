@@ -31,7 +31,9 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }" class = "needAccount">Need an account?</router-link>
+      <div class = "needAccount">
+        <router-link :to="{ name: 'register' }" id="needAccountBtn">Need an account?</router-link>
+      </div>
       <button class="sign-in" type="submit">Sign in</button>
     </form>
   </div>
@@ -156,6 +158,11 @@ h1 {
   color: #DDA0DD;
   padding-top: 15px;
     }
+
+#needAccountBtn {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #DDA0DD;
+}
 
 
 @media  only screen and (min-width: 767px) {
