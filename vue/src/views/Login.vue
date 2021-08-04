@@ -98,7 +98,7 @@ h1 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
-  margin-top: 7%;
+  margin-top: 25%;
 
 }
 
