@@ -90,8 +90,9 @@ nav {
     align-items: center;
     background-color: #DDA0DD;
     min-height: 8vh;
+    width: 100vw;
     font-family: 'Montserrat', sans-serif;
-    position: relative;
+    position: fixed;
     z-index: 2;
 }
   ul.nav-links {

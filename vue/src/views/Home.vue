@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <map-api />
+    <map-api ref="map-api"/>
   </div>
 </template>
 

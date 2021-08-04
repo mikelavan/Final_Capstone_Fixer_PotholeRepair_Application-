@@ -29,8 +29,13 @@
 <script>
 	import MapMarker from "../components/MapMarker"
 	import MapInfoWindow from "../components/MapInfoWindow"
-	import PotholeService from "../services/PotholeService"
+	import PotholeService from "../services/PotholeService" 
+
+	window.createReport = function() {
+		// console.log(report);
+			
 	
+	}
 
 	export default {
 		components: {
@@ -46,7 +51,7 @@
 				//img
 			},
 		}),
-		created() {
+		created: function() {
 			PotholeService.list().then( (response) => {
 				this.$store.commit("ADD_POTHOLES", response.data);
 			}).catch(error => {
@@ -54,6 +59,8 @@
 					console.log(error.response.status);
 				}
 			});
+
+			
 		},
 		methods: {
 			getMap(callback) {
@@ -81,47 +88,79 @@
 				});
 			},
 			createReport() {
-				alert('wow');
+				alert('wow 3');
 				PotholeService.createReport(this.newReportMarker).then(() => {
-					location.reload();
-				}).catch(error => {
-					if(error.response) {
-						console.log('Error submitting new report.');
-					} else if (error.request) {
-						console.log("Error submitting new board. Server could not be reached.");
-					} else {
-						console.log("Error submitting new board. Request could not be created.");
-					}
-				})
+				location.reload();
+			}).catch(error => {
+				if(error.response) {
+					console.log('Error submitting new report.');
+				} else if (error.request) {
+					console.log("Error submitting new board. Server could not be reached.");
+				} else {
+					console.log("Error submitting new board. Request could not be created.");
+				}
+			})
 			}
+			
 		},
 		mounted() {
 			this.map = new window.google.maps.Map(this.$refs["map"], {
 				center: { lat: 39.952465, lng: -75.164062 },
 				zoom: 15
 			});
-			let infoWindow = new window.google.maps.InfoWindow({
-				content: "Click the map to get Lat/Lng!",
-				position: this.map.center,
-			});
+			let infoWindow = null;
+			if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')) {
+				infoWindow = new window.google.maps.InfoWindow({
+					content: "<span style='font-size: 24px;'>Click the map to report a pothole!</span>",
+					position: this.map.center,
+				});
+			} else {
+				infoWindow = new window.google.maps.InfoWindow({
+					content: "<span style='font-size: 24px;'>Click the map to report a pothole! You must be logged in.</span>",
+					position: this.map.center,
+				});
+			}
 			infoWindow.open(this.map);
 			this.map.addListener('click', (event) => {
 				infoWindow.close();
 				let loc = JSON.stringify(event.latLng.toJSON());
 				//changes JSON to array to access and save in dummy var
 				let locArray = JSON.parse(loc);
+				this.newReportMarker = {};
 				this.newReportMarker.latitude = locArray.lat;
 				this.newReportMarker.longitude = locArray.lng;
+				this.$store.commit('ADD_REPORT', this.newReportMarker);
 				// alert(event.latLng);
-				let contentString = "<span style='font-size: 24px;'>Would you like to submit this pothole report?</span><br>" + 
-				"<button onclick='createReport();'>Submit</button>";
-				infoWindow = new window.google.maps.InfoWindow({
-					content: contentString,
-					position: event.latLng,
-				});
+				if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')) {
+					let contentString = "<span style='font-size: 24px;'>Would you like to submit this pothole report?</span><br>" + 
+					"<input type='button' id='submit-report' value='Submit' onclick='createReport()'>";
+					infoWindow = new window.google.maps.InfoWindow({
+						content: contentString,
+						position: event.latLng,
+					});
+				}
 				
 				infoWindow.open(this.map);
+				window.google.maps.event.addListener(infoWindow, 'domready', function() {
+					let submitReportBtn = document.getElementById('submit-report');
+	
+					submitReportBtn.addEventListener('click', () => {
+						PotholeService.createReport().then(() => {
+							location.reload();
+						}).catch(error => {
+							if(error.response) {
+								console.log('Error submitting new report.');
+							} else if (error.request) {
+								console.log("Error submitting new board. Server could not be reached.");
+							} else {
+								console.log("Error submitting new board. Request could not be created.");
+							}
+						})
+					})
+				})
 			});
+			
+			
 		}
 	}
 </script>
