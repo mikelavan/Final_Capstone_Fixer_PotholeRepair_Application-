@@ -137,21 +137,78 @@
                     center: { lat: this.currentPosition.lat, lng: this.currentPosition.lng },
                     zoom: 15
                 });
-			}
+			},
+			simulateClick(el, etype){
+				if (el.fireEvent) {
+					el.fireEvent('on' + etype);
+				}else {
+					var evObj = document.createEvent('Events');
+					evObj.initEvent(etype, true, false);
+					el.dispatchEvent(evObj);
+				}
+				}
+			
 			
 		},
+
 		mounted() {
-			if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(this.showPosition);
-            } else {
-                this.map = new window.google.maps.Map(this.$refs["map"], {
+			this.map = new window.google.maps.Map(this.$refs["map"], {
                     center: { lat: 39.952465, lng: -75.164062 },
                     zoom: 15
-                });
-                console.log('not supported');
-            }
+				});
+				
+			infoWindow = new window.google.maps.InfoWindow();
+			const locationButton = document.createElement("button");
+			locationButton.id = "panButton";
+			locationButton.textContent = "Pan to Current Location";
+			locationButton.classList.add("custom-map-control-button");
+			this.map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+			locationButton.style.fontSize = "20px";
+			locationButton.style.marginTop = "14vh";
+			locationButton.style.padding = "5px";
+			locationButton.style.boxShadow = "0 2px 6px rgba(0, 0, 0, .3)";
+			locationButton.style.textAlign = "center";
+			locationButton.style.fontWeight = "normal";
 			
 
+
+			locationButton.addEventListener("click", () => {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(
+						(position) => {
+							const pos = {
+								lat: position.coords.latitude,
+								lng: position.coords.longitude,
+							};
+							infoWindow.setPosition(pos);
+							infoWindow.setContent("Location found.");
+							infoWindow.open(this.map);
+							this.map.setCenter(pos);
+							},
+							() => {
+								this.handleLocationError(true, infoWindow, this.map.getCenter());
+							}
+						);
+				} else {
+					this.handleLocationError(false, infoWindow, this.map.getCenter());
+				}
+			});
+			
+
+				
+
+			// if(navigator.geolocation) {
+            //     navigator.geolocation.getCurrentPosition(this.showPosition);
+			// } 
+			// else {
+            // //     this.map = new window.google.maps.Map(this.$refs["map"], {
+            // //         center: { lat: 39.952465, lng: -75.164062 },
+            // //         zoom: 15
+            // //     });
+            // //     console.log('not supported');
+            // // }
+			
+			
 			let infoWindow = null;
 			if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')) {
 				infoWindow = new window.google.maps.InfoWindow({
@@ -208,7 +265,8 @@
 				})
 			});
 			
-			
+					// this.simulateClick(document.getElementById("panButton"), "click");
+					// document.getElementById('panButton').click();
 		}
 	}
 </script>
@@ -222,4 +280,23 @@
 		position: relative;
 		z-index: 1;
 	}
+
+#custom-map-control-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  /* padding-top: 1; */
+  width: 100%;
+  height: 7%;
+}
+
 </style>
