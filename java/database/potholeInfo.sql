@@ -16,4 +16,3 @@ INSERT INTO pothole_information (longitude, latitude, severity) VALUES (-75.1704
 INSERT INTO pothole_information (longitude, latitude, severity) VALUES (-75.165260, 39.936435, 3);
 
 
-SELECT * FROM pothole_information;
