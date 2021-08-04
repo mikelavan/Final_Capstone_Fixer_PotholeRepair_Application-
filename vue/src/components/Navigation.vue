@@ -14,17 +14,12 @@ import treeNav from 'vue-tree-nav';
         <img v-bind:src="logoImg" alt="Logo" />
     </div>
     <ul class="nav-links">
-        <li v-for="list in navLinks" :key="list.key">
-            <a v-if="list.dropdown === false" :href="list.link">
-                {{ list.name }}
-            </a>
-            <div class="dropdown-link" v-else>
-                <a :href="list.link">
-                    {{ list.name }}
-                </a>
-                
-            </div>
-        </li>
+        <li> <a href="/"> Home </a> </li>
+        <li> <a href="/"> Create </a> </li>
+        <li> <a href="/review"> Review </a> </li>
+        <li> <a href="/register" v-if="this.$store.state.userIsAuthorized"> Register </a> </li>
+        <li> <a href="/login" v-if="this.$store.state.userIsAuthorized"> Login </a> </li>
+        <li> <a href="/logout"> Logout </a> </li>      
     </ul>
  </nav>
 </template>

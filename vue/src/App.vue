@@ -8,6 +8,8 @@
         {
           name: 'Home',
           link: '/',
+          dropdown: false,
+          
 
         },
 

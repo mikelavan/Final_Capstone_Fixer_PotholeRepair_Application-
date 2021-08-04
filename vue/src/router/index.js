@@ -26,8 +26,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        navBarColor: '#000000',
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
