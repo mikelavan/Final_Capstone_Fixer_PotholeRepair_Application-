@@ -31,10 +31,11 @@ import treeNav from 'vue-tree-nav';
 
 <script>
 export default {
+  
 
-    name: 'Navbar',
-props: ['name', 'logoImg', 'navLinks'],
-methods: {
+  name: 'Navbar',
+  props: ['name', 'logoImg', 'navLinks'],
+  methods: {
 
     openMobileNav() {
     const burger = document.getElementById('burger')
@@ -61,7 +62,7 @@ methods: {
     },
     
     navToLogin() {
-      this.$router.push({ name: 'Login' });
+      this.$router.push({ name: 'home' });
     }
           
     }
