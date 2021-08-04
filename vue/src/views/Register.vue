@@ -192,7 +192,7 @@ h1 {
   background-color: #FDF5E6;
   border-radius: 1.5em;
   z-index: 0;
-  padding-bottom: 20%;
+  /* padding-bottom: 20px; */
   height: 100vh;
 }
 
