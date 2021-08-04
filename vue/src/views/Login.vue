@@ -98,6 +98,7 @@ h1 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
+  margin-top: 7%;
 
 }
 
@@ -200,7 +201,8 @@ h1 {
 
 }
 
-.needAccount {
+
+.sign-in {
 
   cursor: pointer;
       border-radius: 5em;
