@@ -18,6 +18,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    userIsAuthorized:false,
     token: currentToken || '',
     user: currentUser || {},
     potholes: [],
@@ -27,10 +28,12 @@ export default new Vuex.Store({
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
+      state.userIsAuthorized = true;
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     },
     SET_USER(state, user) {
       state.user = user;
+      state.userIsAuthorized = true;
       localStorage.setItem('user',JSON.stringify(user));
     },
     LOGOUT(state) {
@@ -38,6 +41,7 @@ export default new Vuex.Store({
       localStorage.removeItem('user');
       state.token = '';
       state.user = {};
+      state.userIsAuthorized = false;
       axios.defaults.headers.common = {};
     },
     ADD_POTHOLES(state, data) {
