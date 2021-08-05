@@ -9,7 +9,7 @@
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
-					>Delete</button>
+					v-show="!$store.state.user == '' || !$store.state.user.authorities.some(name => name.name === 'ROLE_USER')">Delete</button>
 					<button v-on:click="openScheduleForm(marker)">Schedule</button>
 				</map-info-window>
 			</div>
@@ -189,7 +189,7 @@
 
 		mounted() {
 			
-			// v-show="$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')"
+			// ="$store.state.user.autv-showhorities.some(name => name.name === 'ROLE_ADMIN')"
 			
 			this.map = new window.google.maps.Map(this.$refs["map"], {
                 center: { lat: 39.952465, lng: -75.164062 },
