@@ -216,6 +216,29 @@
                 zoom: 15
 			})
 
+
+			this.$nextTick( () => {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(
+						(position) => {
+							const pos = {
+								lat: position.coords.latitude,
+								lng: position.coords.longitude,
+							};
+							infoWindow.setPosition(pos);
+							infoWindow.setContent("Location found.");
+							infoWindow.open(this.map);
+							this.map.setCenter(pos);
+							},
+							() => {
+								this.handleLocationError(true, infoWindow, this.map.getCenter());
+							}
+						);
+				} else {
+					this.handleLocationError(false, infoWindow, this.map.getCenter());
+				}
+			});
+
 		
 				
 			let infoWindow = new window.google.maps.InfoWindow();
