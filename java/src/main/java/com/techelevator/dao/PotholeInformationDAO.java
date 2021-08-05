@@ -10,4 +10,6 @@ public interface PotholeInformationDAO {
     void deletePothole(int id);
 
     void createReport(PotholeInformation pothole);
+
+    void updateSeverity(PotholeInformation pothole);
 }

@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @CrossOrigin
 @RestController
@@ -23,4 +24,17 @@ public class ScheduleController {
     public void createReport(@Valid @RequestBody Schedule schedule) {
         scheduleService.create(schedule);
     }
+
+    @RequestMapping(path="/schedule", method = RequestMethod.GET)
+//    @PreAuthorize("hasRole('EMPLOYEE')")
+    public ArrayList<Schedule> list() {
+        return scheduleService.getSchedules();
+    }
+
+    @RequestMapping(path="/schedule", method = RequestMethod.PUT)
+//    @PreAuthorize("hasRole('EMPLOYEE')")
+    public void updateSchedule(@Valid @RequestBody Schedule schedule) {
+        scheduleService.updateSchedule(schedule);
+    }
 }
+

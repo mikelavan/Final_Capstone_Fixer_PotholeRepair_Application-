@@ -18,5 +18,17 @@ export default{
 
     schedule(id) {
         return axios.post('/schedule', id);
+    },
+
+    getSchedule() {
+        return axios.get('/schedule');
+    },
+
+    updateSchedule() {
+        return axios.put('/schedule/');
+    },
+
+    updateSeverity() {
+        return  axios.put('/potholes/');
     }
 }

@@ -9,6 +9,15 @@ public class Schedule {
     private LocalDate dateInspected;
     private LocalDate dateRepaired;
     private String status;
+    private int severity;
+
+    public int getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(int severity) {
+        this.severity = severity;
+    }
 
     public int getId() {
         return id;

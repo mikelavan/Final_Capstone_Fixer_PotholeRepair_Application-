@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.JdbcPotholeInformation;
 import com.techelevator.dao.PotholeInformationDAO;
 import com.techelevator.model.PotholeInformation;
+import com.techelevator.model.Schedule;
 import com.techelevator.services.PotholeInformationService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +38,11 @@ public class PotholeInformationController {
     @PreAuthorize("hasAnyRole('ADMIN', 'USER', 'EMPLOYEE')")
     public void createReport(@Valid @RequestBody PotholeInformation pothole) {
         potholeService.create(pothole);
+    }
+
+    @RequestMapping(path="/potholes", method = RequestMethod.PUT)
+//    @PreAuthorize("hasRole('EMPLOYEE')")
+    public void updateSchedule(@Valid @RequestBody PotholeInformation pothole) {
+        potholeService.updateSeverity(pothole);
     }
 }

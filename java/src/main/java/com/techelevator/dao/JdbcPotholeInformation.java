@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.PotholeInformation;
+import com.techelevator.model.Schedule;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -45,6 +46,12 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
     public void createReport(PotholeInformation pothole) {
         String sql = "INSERT INTO pothole_information (longitude, latitude) VALUES (?, ?);";
         jdbcTemplate.update(sql, pothole.getLongitude(), pothole.getLatitude());
+    }
+
+    @Override
+    public void updateSeverity(PotholeInformation pothole) {
+        String sql = "UPDATE pothole_information SET severity = ? WHERE id = ?";
+        jdbcTemplate.update(sql, pothole.getSeverity(), pothole.getPotholeId());
     }
 
     private PotholeInformation mapRowToPotholeInformation(SqlRowSet row) {

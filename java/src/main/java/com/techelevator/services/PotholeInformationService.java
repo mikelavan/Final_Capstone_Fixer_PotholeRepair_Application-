@@ -23,5 +23,7 @@ public class PotholeInformationService {
     public void delete(int id) { potholeInformation.deletePothole(id); }
 
     public void create(PotholeInformation pothole) { potholeInformation.createReport(pothole); }
-    
+
+    public void updateSeverity(PotholeInformation pothole) {potholeInformation.updateSeverity(pothole);}
+
 }

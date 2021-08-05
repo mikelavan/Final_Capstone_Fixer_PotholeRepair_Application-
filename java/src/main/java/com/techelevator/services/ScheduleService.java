@@ -22,4 +22,7 @@ public class ScheduleService {
         jdbcSchedule.createSchedule(schedule);
     }
 
+    public ArrayList<Schedule> getSchedules() { return jdbcSchedule.list(); }
+
+    public void updateSchedule(Schedule schedule) { jdbcSchedule.update(schedule);}
 }
