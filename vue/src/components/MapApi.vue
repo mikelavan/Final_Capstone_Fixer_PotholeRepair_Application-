@@ -9,8 +9,8 @@
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
-					v-if="Object.keys($store.state.user).length > 0 || Object.values($store.state.user.authorities[0]).includes('ROLE_EMPLOYEE')">Delete</button>
-					<button v-on:click="schedule(marker.potholeId)">Schedule</button>
+					v-show="checkUser()">Delete</button>
+					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
 				</map-info-window>
 			</div>
 			<!-- <map-info-window :lat="-23.344" :lng="129.036">
@@ -76,6 +76,12 @@
 					else setTimeout(checkForMap, 200)
 				}
 				checkForMap()
+			},
+			checkUser() {
+				if(Object.keys(this.$store.state.user).length == 0 || Object.values(this.$store.state.user.authorities[0]).includes('ROLE_USER')) {
+					return false;
+				}
+				return true;
 			},
 			deletePothole(id) {
 				PotholeService.deletePothole(id).then(response => {
