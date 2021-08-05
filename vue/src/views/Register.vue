@@ -192,8 +192,8 @@ h1 {
   background-color: #FDF5E6;
   border-radius: 1.5em;
   z-index: 0;
-  /* padding-bottom: 20px; */
-  height: 100vh;
+  padding-bottom: 20px;
+  height: 130vh;
 }
 
 
@@ -253,12 +253,14 @@ h1 {
   background: linear-gradient(to right, #9C27B0, #E040FB);
   border: 0;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
   /* padding-top: 1; */
   width: 100%;
   height: 7%;
+  padding-top: 10%;
+  padding-bottom: 10%;
 
 }
 
