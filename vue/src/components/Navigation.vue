@@ -7,7 +7,7 @@ import treeNav from 'vue-tree-nav';
         <div class="line2"></div>
         <div class="line3"></div>
     </div>
-    <div v-on:click="navToLogin()" v-if="name" id="logo">
+    <div v-on:click="navToHome()" v-if="name" id="logo">
          {{ name }}
     </div>
     <div v-else id="logo">
@@ -56,7 +56,7 @@ export default {
     //     })
     },
     
-    navToLogin() {
+    navToHome() {
       this.$router.push({ name: 'home' });
     }
           
@@ -128,6 +128,12 @@ nav {
 
   
   }
+
+  ul.nav-links a:hover {
+    /* background-color: #F7BAF7; */
+    text-decoration: underline;
+  }
+
   
   div#logo {
     cursor: pointer;
@@ -192,6 +198,12 @@ nav {
     font-weight: 500;
     display: flex;
   }
+
+  ul.nav-links a:hover {
+    /* background-color: #F7BAF7; */
+    text-decoration: underline;
+  }
+
   div#burger {
     display: block;
     width: 40%;
@@ -301,6 +313,12 @@ to {
     display: block;
     width: 100%;
   }
+
+  ul.nav-links a:hover {
+    /* background-color: #F7BAF7; */
+    text-decoration: underline;
+  }
+
   div#burger {
     display: block;
     z-index: 2;
