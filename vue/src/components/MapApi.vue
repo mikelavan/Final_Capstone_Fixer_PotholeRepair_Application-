@@ -280,7 +280,7 @@
 				this.newReportMarker.longitude = locArray.lng;
 				this.$store.commit('ADD_REPORT', this.newReportMarker);
 				// alert(event.latLng);
-				if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_EMPLOYEE' || name.name === 'ROLE_USER')) {
+				if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_EMPLOYEE' || name.name === 'ROLE_USER' || name.name === 'ROLE_ADMIN')) {
 					let contentString = "<span style='font-size: 24px;'>Would you like to submit this pothole report?</span><br>" + 
 					"<input type='button' id='submit-report' value='Submit' onclick='createReport()'>";
 					infoWindow = new window.google.maps.InfoWindow({
