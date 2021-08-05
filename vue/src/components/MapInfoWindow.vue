@@ -18,7 +18,7 @@
 				(this.infoW = new window.google.maps.InfoWindow({
 					position: { lat: this.lat, lng: this.lng },
 					content: this.$el,
-					disableAutoPan: true
+					disableAutoPan: true,
 				})),
 					this.infoW.open(map)
 			})

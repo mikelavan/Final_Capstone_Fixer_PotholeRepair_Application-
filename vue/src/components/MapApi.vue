@@ -8,8 +8,9 @@
 					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
-					<button v-on:click="deletePothole(marker.potholeId)" 
-					v-show="$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')">Delete</button>
+					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
+					>Delete</button>
+					<button v-on:click="openScheduleForm(marker)">Schedule</button>
 				</map-info-window>
 			</div>
 			
@@ -146,18 +147,58 @@
 					evObj.initEvent(etype, true, false);
 					el.dispatchEvent(evObj);
 				}
-				}
+			},
+			openScheduleForm(pothole) {
+				
+				
+				console.log(pothole.potholeId);
+				let cover = document.createElement('div');
+				cover.style.height = '100vh';
+				cover.style.width = '100vw';
+				cover.style.backgroundColor = 'rgba(0,0,0,.5)';
+				cover.style.position = 'relative';
+				cover.style.zIndex = '9';
+
+				document.getElementById('map').appendChild(cover);
+
+
+
+				let form = document.createElement('div');
+				form.style.width = '70%';
+				form.style.height = '40%';
+				form.style.backgroundColor = '#EFEFEF';
+				form.style.position = 'fixed';
+				form.style.left = '0';
+				form.style.right = '0';
+				form.style.top = '0';
+				form.style.bottom = '0';
+				form.style.margin = 'auto';
+				form.style.zIndex = '10';
+				form.style.padding = '10px';
+				form.innerHTML = "<form> " +
+				"<label for='potholeId'>" + pothole.potholeId + "</label>"
+				+ "</form>"
+
+
+
+				document.getElementById('map').appendChild(form);
+			}
 			
 			
 		},
 
 		mounted() {
+			
+			// v-show="$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')"
+			
 			this.map = new window.google.maps.Map(this.$refs["map"], {
-                    center: { lat: 39.952465, lng: -75.164062 },
-                    zoom: 15
-				});
+                center: { lat: 39.952465, lng: -75.164062 },
+                zoom: 15
+			});
+
+		
 				
-			infoWindow = new window.google.maps.InfoWindow();
+			let infoWindow = new window.google.maps.InfoWindow();
 			const locationButton = document.createElement("button");
 			locationButton.id = "panButton";
 			locationButton.textContent = "Pan to Current Location";
@@ -209,7 +250,7 @@
             // // }
 			
 			
-			let infoWindow = null;
+			// let infoWindow = null;
 			if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')) {
 				infoWindow = new window.google.maps.InfoWindow({
 					content: "<span style='font-size: 24px;'>Click the map to report a pothole!</span>",
