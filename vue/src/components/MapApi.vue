@@ -30,6 +30,7 @@
 	import MapMarker from "../components/MapMarker"
 	import MapInfoWindow from "../components/MapInfoWindow"
 	import PotholeService from "../services/PotholeService" 
+	import $ from 'jquery'
 
 	window.createReport = function() {
 		// console.log(report);
@@ -56,6 +57,9 @@
 			},
 			lat: null,
 			lng: null,
+			potholeStatus: {
+				status: 'unscheduled',
+			}
 		}),
 		created: function() {
 			PotholeService.list().then( (response) => {
@@ -181,7 +185,13 @@
 				form.style.zIndex = '10';
 				form.style.padding = '10px';
 				form.innerHTML = "<form> " +
-				"<label for='potholeId'>" + pothole.potholeId + "</label>"
+				"<h2>" + pothole.potholeId + "</h2><br><label for='status'>Status: </label>" +
+				"<select name='status' id='status' v-model='potholeStatus'>" +
+				"<option>" + pothole.status + "</option>" +
+				"<option>Not Scheduled</option>" +
+				"<option>Scheduled</option>" +
+				"<option>Inspected</option>" +
+				"<option>Repaired</option>" +
 				+ "</form>"
 
 
@@ -194,7 +204,7 @@
 				location.reload();
 					console.log(response);
 				})   
-			}
+			},
 			
 			
 		},
@@ -204,7 +214,7 @@
 			this.map = new window.google.maps.Map(this.$refs["map"], {
                 center: { lat: 39.952465, lng: -75.164062 },
                 zoom: 15
-			});
+			})
 
 		
 				
@@ -244,6 +254,8 @@
 					this.handleLocationError(false, infoWindow, this.map.getCenter());
 				}
 			});
+
+			
 			
 
 				
@@ -288,7 +300,7 @@
 				// alert(event.latLng);
 				if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_EMPLOYEE' || name.name === 'ROLE_USER' || name.name === 'ROLE_ADMIN')) {
 					let contentString = "<span style='font-size: 24px;'>Would you like to submit this pothole report?</span><br>" + 
-					"<input type='button' id='submit-report' value='Submit' onclick='createReport()'>";
+					"<br><center><input type='button' id='submit-report' value='Submit' onclick='createReport()'></center>";
 					infoWindow = new window.google.maps.InfoWindow({
 						content: contentString,
 						position: event.latLng,
@@ -317,7 +329,11 @@
 					})
 				})
 			});
-			
+			$('panButton').click();
+			document.querySelectorAll('button').forEach(item => {
+				console.log(item);
+			})
+			document.querySelector('.custom-map-control-button').dispatchEvent(new Event('click'));
 					// this.simulateClick(document.getElementById("panButton"), "click");
 					// document.getElementById('panButton').click();
 		}
