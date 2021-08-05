@@ -9,7 +9,7 @@
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
-					v-show="!$store.state.user == '' || !$store.state.user.authorities.some(name => name.name === 'ROLE_USER')">Delete</button>
+					v-if="Object.keys($store.state.user).length > 0 || Object.values($store.state.user.authorities[0]).includes('ROLE_EMPLOYEE')">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)">Schedule</button>
 				</map-info-window>
 			</div>
@@ -195,8 +195,6 @@
 
 		mounted() {
 			
-			// ="$store.state.user.autv-showhorities.some(name => name.name === 'ROLE_ADMIN')"
-			
 			this.map = new window.google.maps.Map(this.$refs["map"], {
                 center: { lat: 39.952465, lng: -75.164062 },
                 zoom: 15
@@ -257,7 +255,7 @@
 			
 			
 			// let infoWindow = null;
-			if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_EMPLOYEE')) {
+			if(!Object.keys(this.$store.state.user).length == 0) {
 				infoWindow = new window.google.maps.InfoWindow({
 					content: "<span style='font-size: 24px;'>Click the map to report a pothole!</span>",
 					position: this.map.center,
@@ -298,8 +296,9 @@
 	
 					submitReportBtn.addEventListener('click', () => {
 						PotholeService.createReport().then(() => {
+							// let authorized = this.$store.state.userIsAuthorized;
 							location.reload();
-							this.$store.state.userIsAuthorized = true;
+							this.$store.commit("SET_AUTH", true);
 						}).catch(error => {
 							if(error.response) {
 								console.log('Error submitting new report.');

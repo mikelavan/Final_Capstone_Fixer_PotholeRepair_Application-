@@ -16,9 +16,9 @@
         <li> <a href="/"> Home </a> </li>
         <li> <a href="/"> Create </a> </li>
         <li> <a href="/review"> Review </a> </li>
-        <li> <a href="/register" v-if="!this.$store.state.userIsAuthorized"> Register </a> </li>
-        <li> <a href="/login" v-if="!this.$store.state.userIsAuthorized"> Login </a> </li>
-        <li> <a href="/logout" v-if="this.$store.state.userIsAuthorized"> Logout </a> </li>      
+        <li> <a href="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </a> </li>
+        <li> <a href="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </a> </li>
+        <li> <a href="/logout" v-if="Object.keys(this.$store.state.user).length != 0"> Logout </a> </li>      
     </ul>
  </nav>
 </template>

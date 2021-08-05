@@ -54,6 +54,10 @@ export default new Vuex.Store({
     },
     ADD_REPORT(state, data) {
       state.newReport = data;
+    },
+    SET_AUTH(state, data) {
+      state.userIsAuthorized = true;
+      console.log(data);
     }
   }
 })
