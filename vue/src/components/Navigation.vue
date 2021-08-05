@@ -168,7 +168,7 @@ nav {
     flex-direction: column;
     width: 20%;
     height: 100vh;
-    top: -40px;
+    top: -20px;
     right: 105%;
     padding: 100px;
     align-items: center;
@@ -233,6 +233,7 @@ nav {
     font-weight: 800;
     font-size: 2rem;
     z-index: 2;
+    padding-right: 10%;
 
   }
   
@@ -290,7 +291,7 @@ to {
     flex-direction: column;
     width: 25%;
     height: 100vh;
-    top: -50px;
+    top: -20px;
     right: 105%;
     padding: 100px;
     align-items: center;
