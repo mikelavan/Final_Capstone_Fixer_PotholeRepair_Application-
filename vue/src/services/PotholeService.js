@@ -14,5 +14,9 @@ export default{
     createReport() {
         console.log(store.state.newReport);
         return axios.post('/potholes', store.state.newReport)
+    },
+
+    schedule(id) {
+        return axios.post('/schedule', id);
     }
 }
