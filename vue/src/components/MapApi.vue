@@ -10,7 +10,7 @@
 					Pothole ID: {{marker.potholeId}}<br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="!$store.state.user == '' || !$store.state.user.authorities.some(name => name.name === 'ROLE_USER')">Delete</button>
-					<button v-on:click="schedule(marker.id)">Schedule</button>
+					<button v-on:click="schedule(marker.potholeId)">Schedule</button>
 				</map-info-window>
 			</div>
 			<!-- <map-info-window :lat="-23.344" :lng="129.036">
@@ -183,17 +183,11 @@
 				document.getElementById('map').appendChild(form);
 			},
 			schedule(id) {
-				PotholeService.schedule(id).then(response => {
-					location.reload();
-				})
-			    .catch(error => {
-				if(error.response) {
-					console.log('Error submitting new report.');
-				} else if (error.request) {
-					console.log("Error submitting new board. Server could not be reached.");
-				} else {
-					console.log("Error submitting new board. Request could not be created.");
-				}
+				let schedule = {potholeId: id};
+				PotholeService.schedule(schedule).then(response => {
+				location.reload();
+					console.log(response);
+				})   
 			}
 			
 			

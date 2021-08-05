@@ -3,6 +3,7 @@ package com.techelevator.services;
 import com.techelevator.dao.JdbcPotholeInformation;
 import com.techelevator.dao.JdbcSchedule;
 import com.techelevator.model.PotholeInformation;
+import com.techelevator.model.Schedule;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class ScheduleService {
         this.jdbcSchedule = jdbcSchedule;
     }
 
-    public void create(int id) {
-        jdbcSchedule.createSchedule(id);
+    public void create(Schedule schedule) {
+        jdbcSchedule.createSchedule(schedule);
     }
 
 }

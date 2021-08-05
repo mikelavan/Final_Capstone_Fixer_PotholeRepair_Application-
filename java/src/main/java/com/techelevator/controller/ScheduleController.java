@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.model.PotholeInformation;
+import com.techelevator.model.Schedule;
 import com.techelevator.services.PotholeInformationService;
 import com.techelevator.services.ScheduleService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,9 +18,9 @@ public class ScheduleController {
         this.scheduleService = scheduleService;
     }
 
-    @RequestMapping(path="/potholes", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('EMPLOYEE')")
-    public void createReport(@Valid int id) {
-        scheduleService.create(id);
+    @RequestMapping(path="/schedule", method = RequestMethod.POST)
+//    @PreAuthorize("hasRole('EMPLOYEE')")
+    public void createReport(@Valid @RequestBody Schedule schedule) {
+        scheduleService.create(schedule);
     }
 }
