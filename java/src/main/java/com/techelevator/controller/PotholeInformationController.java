@@ -28,13 +28,13 @@ public class PotholeInformationController {
     }
 
     @RequestMapping(path="/potholes/{id}", method = RequestMethod.DELETE)
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public void deletePothole(@PathVariable int id) {
         potholeService.delete(id);
     }
 
     @RequestMapping(path="/potholes", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public void createReport(@Valid @RequestBody PotholeInformation pothole) {
         potholeService.create(pothole);
     }

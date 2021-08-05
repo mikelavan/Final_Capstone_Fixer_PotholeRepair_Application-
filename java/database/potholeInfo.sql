@@ -7,7 +7,9 @@ CREATE TABLE pothole_information (
         latitude FLOAT NOT NULL,
         address VARCHAR(256),
         severity INT,
-        picture VARCHAR(256)
+        picture VARCHAR(256),
+        
+        CONSTRAINT pk_id PRIMARY KEY(id)
 );
 
 INSERT INTO pothole_information (longitude, latitude, severity) VALUES (-75.148619, 39.944040, 3);
