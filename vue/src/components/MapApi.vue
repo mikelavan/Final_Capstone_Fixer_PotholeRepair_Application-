@@ -257,7 +257,7 @@
 			
 			
 			// let infoWindow = null;
-			if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')) {
+			if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_EMPLOYEE')) {
 				infoWindow = new window.google.maps.InfoWindow({
 					content: "<span style='font-size: 24px;'>Click the map to report a pothole!</span>",
 					position: this.map.center,
@@ -282,7 +282,7 @@
 				this.newReportMarker.longitude = locArray.lng;
 				this.$store.commit('ADD_REPORT', this.newReportMarker);
 				// alert(event.latLng);
-				if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_ADMIN')) {
+				if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_EMPLOYEE' || name.name === 'ROLE_USER')) {
 					let contentString = "<span style='font-size: 24px;'>Would you like to submit this pothole report?</span><br>" + 
 					"<input type='button' id='submit-report' value='Submit' onclick='createReport()'>";
 					infoWindow = new window.google.maps.InfoWindow({
@@ -299,6 +299,7 @@
 					submitReportBtn.addEventListener('click', () => {
 						PotholeService.createReport().then(() => {
 							location.reload();
+							this.$store.state.userIsAuthorized = true;
 						}).catch(error => {
 							if(error.response) {
 								console.log('Error submitting new report.');
