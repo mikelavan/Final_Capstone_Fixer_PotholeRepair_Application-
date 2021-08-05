@@ -28,7 +28,7 @@ public class PotholeInformationController {
     }
 
     @RequestMapping(path="/potholes/{id}", method = RequestMethod.DELETE)
-    @PreAuthorize("hasRole('EMPLOYEE')")
+    @PreAuthorize("hasAnyRole('EMPLOYEE', 'ADMIN')")
     public void deletePothole(@PathVariable int id) {
         potholeService.delete(id);
     }
