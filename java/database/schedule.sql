@@ -4,6 +4,7 @@ CREATE TABLE schedule (
         schedule_id SERIAL,
         pothole_id INT NOT NULL,
         status VARCHAR (50),
+        date_reported DATE,
         date_inspected DATE,
         date_repaired DATE,
         
