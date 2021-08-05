@@ -2,18 +2,17 @@
 <div>
 	<div id="map" ref="map">
 		
-			<div id="markers" v-for="marker in $store.state.potholes" :key="marker.id">
-				<map-marker :lat="marker.latitude" :lng="marker.longitude"></map-marker>
+			<div id="markers" v-for="marker in $store.state.potholes" :key="marker.id" >
+				<map-marker  :lat="marker.latitude" :lng="marker.longitude"></map-marker>
 				<map-info-window :lat="marker.latitude + .00001" :lng="marker.longitude">
 					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					>Delete</button>
-					<button v-on:click="openScheduleForm(marker)">Schedule</button>
+					<button  v-on:click="openScheduleForm(marker)">Schedule</button>
 				</map-info-window>
 			</div>
-			
 			<!-- <map-info-window :lat="-23.344" :lng="129.036">
 				<span style="background:red;">Test 2</span>
 			</map-info-window>

@@ -1,4 +1,3 @@
-import treeNav from 'vue-tree-nav';
 
 <template>
  <nav>
