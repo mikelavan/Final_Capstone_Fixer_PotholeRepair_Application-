@@ -8,6 +8,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Component
 public class JdbcPotholeInformation implements PotholeInformationDAO {
@@ -52,6 +53,15 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
         sql = "INSERT INTO schedule (pothole_id) VALUES (?)";
         jdbcTemplate.update(sql, potholeID);
+
+        sql = "SELECT date_created FROM pothole_information WHERE id = ?";
+        Date date = jdbcTemplate.queryForObject(sql, Date.class, potholeID);
+
+        if (date != null){
+            sql = "UPDATE schedule SET date_reported = ? WHERE pothole_id = ?";
+            jdbcTemplate.update(sql, date, potholeID);
+        }
+
     }
 
     @Override
