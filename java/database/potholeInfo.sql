@@ -9,7 +9,6 @@ CREATE TABLE pothole_information (
         address VARCHAR(256),
         severity INT,
         picture BYTEA,
-        status VARCHAR(256) DEFAULT 'Reported',
         
         CONSTRAINT pk_id PRIMARY KEY(id)
 );

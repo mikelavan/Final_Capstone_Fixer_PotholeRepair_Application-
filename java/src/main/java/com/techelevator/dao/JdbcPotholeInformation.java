@@ -8,6 +8,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Component
 public class JdbcPotholeInformation implements PotholeInformationDAO {
@@ -22,7 +23,9 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     @Override
     public ArrayList<PotholeInformation> getPotholes() {
-        String sql = "SELECT id, date_created, longitude, latitude, severity, status FROM pothole_information";
+        String sql = "SELECT id, date_created, longitude, latitude, severity, s.status FROM pothole_information p " +
+                "JOIN  schedule s ON p.id = s.pothole_id"
+                ;
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         ArrayList<PotholeInformation> potholes = new ArrayList<>();
         try {
@@ -44,8 +47,21 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     @Override
     public void createReport(PotholeInformation pothole) {
-        String sql = "INSERT INTO pothole_information (longitude, latitude) VALUES (?, ?);";
-        jdbcTemplate.update(sql, pothole.getLongitude(), pothole.getLatitude());
+        String sql = "INSERT INTO pothole_information (longitude, latitude) VALUES (?, ?) RETURNING id";
+        Integer potholeID;
+        potholeID = jdbcTemplate.queryForObject(sql, Integer.class, pothole.getLongitude(), pothole.getLatitude());
+
+        sql = "INSERT INTO schedule (pothole_id) VALUES (?)";
+        jdbcTemplate.update(sql, potholeID);
+
+        sql = "SELECT date_created FROM pothole_information WHERE id = ?";
+        Date date = jdbcTemplate.queryForObject(sql, Date.class, potholeID);
+
+        if (date != null){
+            sql = "UPDATE schedule SET date_reported = ? WHERE pothole_id = ?";
+            jdbcTemplate.update(sql, date, potholeID);
+        }
+
     }
 
     @Override
@@ -58,7 +74,8 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
         PotholeInformation potholes = new PotholeInformation();
         potholes.setPotholeId(row.getInt("id"));
         potholes.setDateCreated(row.getDate("date_created").toLocalDate());
-        potholes.setStatus(row.getString("status"));
+        if(row.getString("status") != null){
+        potholes.setStatus(row.getString("status")); }
         potholes.setLongitude(row.getDouble("longitude"));
         potholes.setLatitude(row.getDouble("latitude"));
         potholes.setSeverity(row.getInt("severity"));

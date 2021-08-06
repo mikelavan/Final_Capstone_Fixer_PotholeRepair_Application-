@@ -16,7 +16,7 @@
                     <option v-show="potholes.status != 'Reported'">Reported</option>
                 </select>
                 <br>
-                <button type="submit" onclick="return false">Submit New Status</button>
+                <button type="submit" v-on:submit.prevent=" updateSchedule()">Submit New Status</button>
             </form>
         </ul>
         
@@ -27,6 +27,7 @@
 
 <script>
 import PotholeService from "../services/PotholeService" 
+import moment from "moment";
 export default {
     name: "review",
     components: {},
@@ -52,6 +53,33 @@ export default {
 			});
         },
     methods: {
+        updateSchedule() {
+                const schedule = {
+                    potholeId: this.potholes.id,
+                    status: this.potholes.status,
+                    dateInspected: null,
+                    dateRepaired: null
+                }
+
+                if(schedule.status === 'Inspected'){
+                    schedule.dateInspected = moment().format('YYYY-MM-DD')
+                } else if (schedule.status === 'Repaired'){
+                    schedule.dateRepaired = moment().format('YYYY-MM-DD')
+                }
+
+
+				PotholeService.updateSchedule(schedule).then(() => {
+				console.log(schedule)
+			}).catch(error => {
+				if(error.response) {
+					console.log('Error submitting new report.');
+				} else if (error.request) {
+					console.log("Error submitting new board. Server could not be reached.");
+				} else {
+					console.log("Error submitting new board. Request could not be created.");
+				}
+			})
+			},
         
     },
     created() {

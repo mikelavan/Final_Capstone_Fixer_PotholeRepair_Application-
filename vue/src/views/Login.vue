@@ -31,6 +31,12 @@
         v-model="user.password"
         required
       />
+
+      <!-- forgot pw component here
+      <div class= "forgotPw">
+      </div>
+      -->
+
       <div class = "needAccount">
         <router-link :to="{ name: 'register' }" id="needAccountBtn">Need an account?</router-link>
       </div>
@@ -51,7 +57,7 @@ export default {
         username: "",
         password: ""
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
@@ -177,6 +183,7 @@ h1 {
   color: #DDA0DD;
   text-decoration: none;
 }
+
 
 }
 @media  only screen and (max-width: 766px) {
