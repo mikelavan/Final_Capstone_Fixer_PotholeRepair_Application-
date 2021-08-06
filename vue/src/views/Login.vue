@@ -39,7 +39,7 @@
   </div>
 </template>
 
-<script>
+<script scope>
 import authService from "../services/AuthService";
 
 export default {

@@ -34,37 +34,22 @@ export default {
     openMobileNav() {
     const burger = document.getElementById('burger')
     const nav = document.querySelector('.nav-links')
-    // const navLinks = document.querySelectorAll('.nav-links li')
-// Toggle navigation on mobile
     nav.classList.toggle('nav-active')
-    // Burger toggler
     burger.classList.toggle('toggle')
-// Animate navigation links
-    // navLinks.forEach((link, index) => {
-
-    //     if (link.style.animation || link.style.webkitAnimation) {
-    //         link.style.animation = ''
-    //         link.style.webkitAnimation = ''
-    //     } else {
-    //         link.style.webkitAnimation = `navLinkFade 0.5s ease forwards ${
-    //         index / 7
-    //       }s`
-    //         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7}s`
-    //     }
-        
-    //     })
     },
     
     navToHome() {
       this.$router.push({ name: 'home' });
-    }
-          
+    },
     }
 }
 
 </script>
 
 <style>
+
+
+
 
 body {
  margin: 0px;

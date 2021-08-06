@@ -23,7 +23,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     potholes: [],
     newReport: {},
-  },
+  },    
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -58,6 +58,9 @@ export default new Vuex.Store({
     SET_AUTH(state, data) {
       state.userIsAuthorized = true;
       console.log(data);
-    }
+    },
+    SET_POTHOLES(state, potholes) {
+      state.potholes = potholes
+    },
   }
 })
