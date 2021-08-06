@@ -12,28 +12,35 @@
     <div v-else id="logo">
         <img v-bind:src="logoImg" alt="Logo" />
     </div>
-    <ul class="nav-links">
+    <ul class="nl" id="nav-links">
         <li> <a href="/"> Home </a> </li>
-        <li> <a href="/"> Create </a> </li>
-        <li> <a href="/review"> Review </a> </li>
-        <li> <a href="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </a> </li>
-        <li> <a href="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </a> </li>
-        <li> <a href="/logout" v-if="Object.keys(this.$store.state.user).length != 0"> Logout </a> </li>      
+        <li> <a  href="/"> Create </a> </li>
+        <li> <a  href="/review"> Review </a> </li>
+        <li> <a  href="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </a> </li>
+        <li> <a  href="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </a> </li>
+        <li> <a  href="/logout" v-if="Object.keys(this.$store.state.user).length != 0"> Logout </a> </li>      
     </ul>
  </nav>
 </template>
 
 <script>
+import $ from 'jquery'
+ 
+
+
 export default {
+  
   
 
   name: 'Navbar',
   props: ['name', 'logoImg', 'navLinks'],
   methods: {
 
+    
+
     openMobileNav() {
     const burger = document.getElementById('burger')
-    const nav = document.querySelector('.nav-links')
+    const nav = document.querySelector('#nav-links')
     nav.classList.toggle('nav-active')
     burger.classList.toggle('toggle')
     },
@@ -41,13 +48,37 @@ export default {
     navToHome() {
       this.$router.push({ name: 'home' });
     },
-    }
+
+    
+    },
+
+  mounted() {
+    var selector = '.nl a';
+
+    $(selector).on('click', function(){
+      $(selector).removeClass('active');
+      $(this).addClass('active');
+});
+
+
+
+  }
+
+    
+    
+  
+    
 }
+
+
 
 </script>
 
 <style>
 
+a.active {
+    color: red;
+}
 
 
 
@@ -88,7 +119,7 @@ nav {
     position: fixed;
     z-index: 2;
 }
-  ul.nav-links {
+  ul#nav-links {
     display: flex;
     flex-direction: row;
     width: 75%;
@@ -101,13 +132,13 @@ nav {
     gap: 5px;
     margin-right: auto;
   }
-  ul.nav-links li {
+  ul#nav-links li {
     justify-content: flex-end;
     display: flex;
     opacity: 1;
 
   }
-  ul.nav-links a {
+  ul#nav-links a {
     display: flex;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
@@ -117,7 +148,7 @@ nav {
   
   }
 
-  ul.nav-links a:hover {
+  ul#nav-links a:hover {
     /* background-color: #F7BAF7; */
     text-decoration: underline;
   }
@@ -152,7 +183,7 @@ nav {
     position: fixed;
     z-index: 2;
   }
-  ul.nav-links {
+  ul#nav-links {
     position: absolute;
     flex-direction: column;
     width: 20%;
@@ -168,7 +199,7 @@ nav {
     transition: transform 0.5s ease-in;
     z-index: 1;
   }
-  ul.nav-links li {
+  ul#nav-links li {
     height: 60px;
     justify-content: flex-end;
     display: flex;
@@ -179,7 +210,7 @@ nav {
   }
 
   
-  ul.nav-links a {
+  ul#nav-links a {
     text-decoration: none;
     color: #fefefe;
     font-size: 1.2rem;
@@ -187,7 +218,7 @@ nav {
     display: flex;
   }
 
-  ul.nav-links a:hover {
+  ul#nav-links a:hover {
     /* background-color: #F7BAF7; */
     text-decoration: underline;
   }
@@ -275,7 +306,7 @@ to {
     z-index: 2;
   }
 
-  ul.nav-links {
+  ul#nav-links {
     position: absolute;
     flex-direction: column;
     width: 25%;
@@ -291,19 +322,19 @@ to {
     transition: transform 0.5s ease-in;
     z-index: 1;
   }
-  ul.nav-links li {
+  ul#nav-links li {
     display: flex;
     justify-content: flex-end;
     opacity: 1;
     height: 60px; 
     align-items: center;
   }
-  ul.nav-links a {
+  ul#nav-links a {
     display: block;
     width: 100%;
   }
 
-  ul.nav-links a:hover {
+  ul#nav-links a:hover {
     /* background-color: #F7BAF7; */
     text-decoration: underline;
   }

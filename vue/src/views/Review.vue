@@ -73,10 +73,23 @@ export default {
 .review {
     position: absolute;
     top: 9vh;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #FDF5E6;
+    width: 100%;
+}
+
+#potholesReview {
+    margin-top: 5%;
+
+
 }
 @media  only screen and (max-width: 768px) {
     .review {
         top: 13vh;
     }
+
+#potholesReview {
+
+}
 }
 </style>
