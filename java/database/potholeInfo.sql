@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS schedule;
 DROP TABLE IF EXISTS pothole_information;
 
 CREATE TABLE pothole_information (
@@ -7,7 +8,7 @@ CREATE TABLE pothole_information (
         latitude FLOAT NOT NULL,
         address VARCHAR(256),
         severity INT,
-        picture VARCHAR(256),
+        picture BYTEA,
         
         CONSTRAINT pk_id PRIMARY KEY(id)
 );
