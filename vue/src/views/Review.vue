@@ -12,6 +12,7 @@
                 <select v-model="status" onchange="alert('test')">
                     <option v-show="potholes.status != 'Scheduled'">Scheduled</option>
                     <option v-show="potholes.status != 'Repaired'">Repaired</option>
+                    <option v-show="potholes.status != 'Inspected'">Inspected</option>
                     <option v-show="potholes.status != 'Reported'">Reported</option>
                 </select>
                 <br>
