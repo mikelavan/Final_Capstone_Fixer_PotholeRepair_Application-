@@ -68,7 +68,7 @@ export default {
                 }
 
 
-				PotholeService.updateSchedule()(schedule).then(() => {
+				PotholeService.updateSchedule(schedule).then(() => {
 				console.log(schedule)
 			}).catch(error => {
 				if(error.response) {
