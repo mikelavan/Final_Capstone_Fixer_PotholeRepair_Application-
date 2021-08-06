@@ -1,15 +1,24 @@
 <template>
   <div class="review">
-    <h1>hello pls display</h1>
-    <h1>more display pls</h1>
-    <h1>why isn't anything else displaying</h1>
     <div id="potholesReview" v-for="potholes in $store.state.potholes" :key="potholes">
         <ul>
-            <li>hello i am testing that something is displaying on the page!</li>
-            <li>something else is here in this list</li>
-            <li>and another one lol</li>
-            <li>{{ potholes.date_created }}</li>
+            <li>Date Created: {{ potholes.dateCreated }}</li>
+            <li>Latitude: {{ potholes.latitude }}</li>
+            <li>Longitude: {{ potholes.longitude }}</li>
+            <li>Pothole ID: {{ potholes.potholeId }}</li>
+            <li>Severity: {{ potholes.severity }}</li>
+            <li>Current Status: {{ potholes.status }}</li>
+            <form>
+                <select v-model="status" onchange="alert('test')">
+                    <option v-show="potholes.status != 'Scheduled'">Scheduled</option>
+                    <option v-show="potholes.status != 'Repaired'">Repaired</option>
+                    <option v-show="potholes.status != 'Reported'">Reported</option>
+                </select>
+                <br>
+                <button>Submit New Status</button>
+            </form>
         </ul>
+        
     </div>
     
   </div>
@@ -21,7 +30,7 @@ export default {
     name: "review",
     components: {},
     data: () => ({
-        potholes: []
+        potholes: [],
     }),
     displayReviews: function() {
             PotholeService.list().then( (response) => {
@@ -34,10 +43,30 @@ export default {
         },
     methods: {
         
+    },
+    created() {
+        PotholeService.list().then( (response) => {
+				this.$store.commit("ADD_POTHOLES", response.data);
+			}).catch(error => {
+				if(error.response.status == 400) {
+					console.log(error.response.status);
+				}
+			});
+    }, 
+    mounted() {
+        
     }
 }
 </script>
 
 <style>
-
+.review {
+    position: absolute;
+    top: 9vh;
+}
+@media  only screen and (max-width: 768px) {
+    .review {
+        top: 13vh;
+    }
+}
 </style>

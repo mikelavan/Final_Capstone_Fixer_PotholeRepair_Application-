@@ -22,7 +22,7 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     @Override
     public ArrayList<PotholeInformation> getPotholes() {
-        String sql = "SELECT id, date_created, longitude, latitude, severity FROM pothole_information";
+        String sql = "SELECT id, date_created, longitude, latitude, severity, status FROM pothole_information";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         ArrayList<PotholeInformation> potholes = new ArrayList<>();
         try {
@@ -58,6 +58,7 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
         PotholeInformation potholes = new PotholeInformation();
         potholes.setPotholeId(row.getInt("id"));
         potholes.setDateCreated(row.getDate("date_created").toLocalDate());
+        potholes.setStatus(row.getString("status"));
         potholes.setLongitude(row.getDouble("longitude"));
         potholes.setLatitude(row.getDouble("latitude"));
         potholes.setSeverity(row.getInt("severity"));

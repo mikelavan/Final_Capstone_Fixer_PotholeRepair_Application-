@@ -56,6 +56,10 @@ body {
  padding: 0px;
 }
 
+ nav {
+   top: 0;
+ }
+
 
 nav {
     
