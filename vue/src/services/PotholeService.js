@@ -30,5 +30,9 @@ export default{
 
     updateSeverity() {
         return  axios.put('/potholes/');
+    },
+
+    uploadImage(id) {
+        return axios.put(`/potholes/${id}`, '../../assets/pothole_test.jpg');
     }
 }
