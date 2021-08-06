@@ -32,6 +32,16 @@
         required
       />
 
+      <div class="forgotPw">
+
+        <button type="button" class="btn" @click="showModal">
+          Forgot password?
+        </button>
+
+        <forgot-pw-modal v-show="isModalVisible" @close="closeModal"/>
+      
+      </div>
+
       <!-- forgot pw component here
       <div class= "forgotPw">
       </div>
@@ -47,10 +57,13 @@
 
 <script scope>
 import authService from "../services/AuthService";
+import ForgotPwModal from '../components/ForgotPwModal.vue';
 
 export default {
   name: "login",
-  components: {},
+  components: {
+    ForgotPwModal
+  },
   data() {
     return {
       user: {
@@ -58,6 +71,7 @@ export default {
         password: ""
       },
       invalidCredentials: false,
+      isModalVisible: false
     };
   },
   methods: {
@@ -78,6 +92,12 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
     }
   }
 };
