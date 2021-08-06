@@ -1,6 +1,6 @@
-<template>
+    <template>
   <div class="review">
-    <div id="potholesReview" v-for="potholes in $store.state.potholes" :key="potholes">
+    <div id="potholesReview" v-for="potholes in $store.state.potholes" :key="potholes.id">
         <ul>
             <li>Date Created: {{ potholes.dateCreated }}</li>
             <li>Latitude: {{ potholes.latitude }}</li>
@@ -9,13 +9,13 @@
             <li>Severity: {{ potholes.severity }}</li>
             <li>Current Status: {{ potholes.status }}</li>
             <form>
-                <select v-model="status" onchange="alert('test')">
+                <select v-model="potholes.status" onchange="alert('test')">
                     <option v-show="potholes.status != 'Scheduled'">Scheduled</option>
                     <option v-show="potholes.status != 'Repaired'">Repaired</option>
                     <option v-show="potholes.status != 'Reported'">Reported</option>
                 </select>
                 <br>
-                <button>Submit New Status</button>
+                <button type="submit" onclick="return false">Submit New Status</button>
             </form>
         </ul>
         
@@ -30,7 +30,16 @@ export default {
     name: "review",
     components: {},
     data: () => ({
-        potholes: [],
+        potholes: [{dateCreated: null,
+                    latitude: null,
+                    longitude: null,
+                    potholeId: "",
+                    severity: "",
+                    status: null,
+                   }            
+                ],
+                message: ""
+
     }),
     displayReviews: function() {
             PotholeService.list().then( (response) => {
