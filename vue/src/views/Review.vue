@@ -62,7 +62,7 @@ export default {
                     dateRepaired: null,
                 }
 
-                console.log(schedule);
+                // console.log(schedule);
 
                 if(schedule.status === 'Inspected'){
                     schedule.dateInspected = moment().format('YYYY-MM-DD')
