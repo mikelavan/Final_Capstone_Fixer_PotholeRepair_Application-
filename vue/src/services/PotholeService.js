@@ -24,8 +24,9 @@ export default{
         return axios.get('/schedule');
     },
 
-    updateSchedule() {
-        return axios.put('/schedule/');
+    updateSchedule(schedule) {
+        console.log('test put');
+        return axios.put('/schedule', schedule);
     },
 
     updateSeverity() {

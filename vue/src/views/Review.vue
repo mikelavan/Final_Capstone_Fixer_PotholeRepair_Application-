@@ -16,7 +16,7 @@
                     <option v-show="potholes.status != 'Reported'">Reported</option>
                 </select>
                 <br>
-                <button type="submit" v-on:submit.prevent=" updateSchedule()">Submit New Status</button>
+                <button v-on:click.prevent="updateSchedule(potholes.status, potholes)">Submit New Status</button>
             </form>
         </ul>
         
@@ -53,13 +53,16 @@ export default {
 			});
         },
     methods: {
-        updateSchedule() {
+        updateSchedule(status, pothole) {
+                // console.log(status + ' ' + id);
                 const schedule = {
-                    potholeId: this.potholes.id,
-                    status: this.potholes.status,
+                    potholeId: pothole.potholeId,
+                    status: status,
                     dateInspected: null,
-                    dateRepaired: null
+                    dateRepaired: null,
                 }
+
+                console.log(schedule);
 
                 if(schedule.status === 'Inspected'){
                     schedule.dateInspected = moment().format('YYYY-MM-DD')

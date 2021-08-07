@@ -41,7 +41,8 @@ public class JdbcSchedule implements ScheduleDAO {
 
     @Override
     public void update(Schedule schedule) {
-        String sql = "UPDATE schedule SET date_inspected = ?, date_repaired = ?, status = ? WHERE pothole_id = ?";
+        String sql = "UPDATE schedule SET date_inspected = ?, date_repaired = ?, status = ? " +
+                "WHERE pothole_id = ?";
         jdbcTemplate.update(sql, schedule.getDateInspected(), schedule.getDateRepaired(), schedule.getStatus(), schedule.getPotholeId());
     }
 
