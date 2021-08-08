@@ -9,15 +9,27 @@
             <li>Severity: {{ potholes.severity }}</li>
             <li>Current Status: {{ potholes.status }}</li>
             <form>
-                <select v-model="potholes.status" onchange="alert('test')">
+                <select v-model="potholes.status">
                     <option v-show="potholes.status != 'Scheduled'">Scheduled</option>
                     <option v-show="potholes.status != 'Repaired'">Repaired</option>
                     <option v-show="potholes.status != 'Inspected'">Inspected</option>
                     <option v-show="potholes.status != 'Reported'">Reported</option>
                 </select>
                 <br>
-                <button v-on:click.prevent="updateSchedule(potholes.status, potholes)">Submit New Status</button>
+                <p v-if="potholes.status == 'Inspected'"> Please rate level of severity </p>
+                <select v-model="potholes.severity" v-if="potholes.status == 'Inspected'"> 
+                    <option disabled value="">Please rate severity of pothole from 1 to 5</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <button v-on:click.prevent="updateSchedule(potholes.status, potholes.severity, potholes)" >Submit New Status</button>
             </form>
+            <form v-if="changeToInspected">
+                
+            </form>    
         </ul>
         
     </div>
@@ -40,7 +52,9 @@ export default {
                     status: null,
                    }            
                 ],
-                message: ""
+                message: "",
+                changeToInspected: false,
+                
 
     }),
     displayReviews: function() {
@@ -53,13 +67,14 @@ export default {
 			});
         },
     methods: {
-        updateSchedule(status, pothole) {
+        updateSchedule(status, severity, pothole) {
                 // console.log(status + ' ' + id);
                 const schedule = {
                     potholeId: pothole.potholeId,
                     status: status,
                     dateInspected: null,
                     dateRepaired: null,
+                    severity: severity,
                 }
 
                 // console.log(schedule);
@@ -71,7 +86,10 @@ export default {
                 }
 
 
-				PotholeService.updateSchedule(schedule).then(() => {
+				PotholeService.updateSchedule(schedule).then(response => {
+                    if (response.status === 200) {
+                        alert("Status Submitted");
+                    }
 				console.log(schedule)
 			}).catch(error => {
 				if(error.response) {
@@ -82,7 +100,13 @@ export default {
 					console.log("Error submitting new board. Request could not be created.");
 				}
 			})
-			},
+            },
+            checkForInspection(status){
+                if(status === 'Inspected'){
+                    this.changeToInspected = true;
+                }
+
+            }
         
     },
     created() {

@@ -23,7 +23,7 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     @Override
     public ArrayList<PotholeInformation> getPotholes() {
-        String sql = "SELECT id, date_created, longitude, latitude, severity, s.status FROM pothole_information p " +
+        String sql = "SELECT id, date_created, longitude, latitude, s.severity, s.status FROM pothole_information p " +
                 "JOIN  schedule s ON p.id = s.pothole_id " +
                 "ORDER BY id ASC";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);

@@ -24,7 +24,7 @@ public class JdbcSchedule implements ScheduleDAO {
 
     @Override
     public ArrayList<Schedule> list() {
-        String sql = "SELECT schedule_id, pothole_id, status, p.date_created, date_inspected, date_repaired, severity FROM schedule " +
+        String sql = "SELECT schedule_id, pothole_id, status, p.date_created, date_inspected, date_repaired, s.severity FROM schedule s " +
                 "JOIN pothole_information p ON p.id = pothole_id";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         ArrayList<Schedule>  schedules = new ArrayList<>();
@@ -41,9 +41,9 @@ public class JdbcSchedule implements ScheduleDAO {
 
     @Override
     public void update(Schedule schedule) {
-        String sql = "UPDATE schedule SET date_inspected = ?, date_repaired = ?, status = ? " +
+        String sql = "UPDATE schedule SET date_inspected = ?, date_repaired = ?, status = ?, severity = ? " +
                 "WHERE pothole_id = ?";
-        jdbcTemplate.update(sql, schedule.getDateInspected(), schedule.getDateRepaired(), schedule.getStatus(), schedule.getPotholeId());
+        jdbcTemplate.update(sql, schedule.getDateInspected(), schedule.getDateRepaired(), schedule.getStatus(), schedule.getSeverity(), schedule.getPotholeId());
     }
 
     private Schedule mapRowToSchedule(SqlRowSet row) {
