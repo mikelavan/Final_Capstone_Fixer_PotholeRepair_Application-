@@ -43,6 +43,12 @@ export default {
 
 <style>
 
+.forgotPw {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
   .modal-backdrop {
     position: fixed;
     top: 0;
