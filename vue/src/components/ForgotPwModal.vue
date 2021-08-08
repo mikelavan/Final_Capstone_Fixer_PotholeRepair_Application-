@@ -76,9 +76,10 @@ export default {
   }
 
   .modal-header {
+    font-family: 'Ubuntu', sans-serif;
     position: relative;
     border-bottom: 1px solid #eeeeee;
-    color: #4AAE9B;
+    color: #8C55AA;
     justify-content: space-between;
   }
 
@@ -89,6 +90,7 @@ export default {
   }
 
   .modal-body {
+    font-family: 'Ubuntu', sans-serif;
     position: relative;
     padding: 20px 10px;
   }
@@ -102,14 +104,14 @@ export default {
     padding: 10px;
     cursor: pointer;
     font-weight: bold;
-    color: #4AAE9B;
+    color: #8C55AA;
     background: transparent;
   }
 
   .btn-green {
     color: white;
-    background: #4AAE9B;
-    border: 1px solid #4AAE9B;
+    background: #8C55AA;
+    border: 1px solid #8C55AA;
     border-radius: 2px;
   }
 
