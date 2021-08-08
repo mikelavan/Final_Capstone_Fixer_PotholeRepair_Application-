@@ -55,9 +55,8 @@ export default {
                 ],
                 message: "",
                 changeToInspected: false,
-                
-
     }),
+    
     displayReviews: function() {
             PotholeService.list().then( (response) => {
                 this.$store.commit("ADD_POTHOLES", response.data);

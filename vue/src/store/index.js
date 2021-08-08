@@ -23,8 +23,24 @@ export default new Vuex.Store({
     user: currentUser || {},
     potholes: [],
     newReport: {},
+    linkIsActive: {
+      home: true,
+      create: false,
+      review: false,
+      login: false,
+      register: false
+    }
   },    
   mutations: {
+    LINK_ACTIVE(state, activePage) {
+        state.linkIsActive[activePage] = true;
+        console.log('in link active');
+        for(const page in state.linkIsActive) {
+          if (state.linkIsActive[page] != state.linkIsActive[activePage]) {
+              state.linkIsActive[page] = false
+          }
+        }
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);

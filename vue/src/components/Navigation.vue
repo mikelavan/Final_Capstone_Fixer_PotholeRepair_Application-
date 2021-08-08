@@ -12,15 +12,15 @@
     <div v-else id="logo">
         <img v-bind:src="logoImg" alt="Logo" />
     </div>
-    <ul class="nl" id="nav-links">
-        <li> <a href="/"> Home </a> </li>
-        <li> <a  href="/"> Create </a> </li>
-        <li> <a  href="/review"> Review </a> </li>
-        <li> <a  href="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </a> </li>
-        <li> <a  href="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </a> </li>
-        <li> <a  href="/logout" v-if="Object.keys(this.$store.state.user).length != 0"> Logout </a> </li>  
-        <li v-if="Object.keys(this.$store.state.user).length != 0 && $store.state.user.authorities[0].name == 'ROLE_ADMIN'">Employee: {{$store.state.user.username}}</li>
-        <li v-if="Object.keys(this.$store.state.user).length != 0 && $store.state.user.authorities[0].name == 'ROLE_USER'">User: {{$store.state.user.username}}</li>   
+    <ul class="nl" id="nav-links" >
+        <li> <a v-on:click="changeActivePage('home')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.home }" href="/"> Home </a> </li>
+        <li> <a v-on:click="changeActivePage('create')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/"> Create </a> </li>
+        <li> <a v-on:click="changeActivePage('review')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/review"> Review </a> </li>
+        <li> <a v-on:click="changeActivePage('register')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </a> </li>
+        <li> <a v-on:click="changeActivePage('login')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </a> </li>
+        <li> <a v-on:click="changeActivePage('logout')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/logout" v-if="Object.keys(this.$store.state.user).length != 0"> Logout </a> </li>  
+        <li v-if="Object.keys(this.$store.state.user).length != 0 && this.$store.state.user.authorities[0].name == 'ROLE_ADMIN'">Employee: {{$store.state.user.username}}</li>
+        <li v-if="Object.keys(this.$store.state.user).length != 0 && this.$store.state.user.authorities[0].name == 'ROLE_USER'">User: {{$store.state.user.username}}</li>   
     </ul>
  </nav>
 </template>
@@ -28,18 +28,17 @@
 <script>
 import $ from 'jquery'
  
-
-
 export default {
-  
-  
-
   name: 'Navbar',
   props: ['name', 'logoImg', 'navLinks'],
+
+  data: () => ({}),
+
   methods: {
-
-    
-
+    changeActivePage(page) {
+      this.$store.commit("LINK_ACTIVE", page);
+    },
+  
     openMobileNav() {
     const burger = document.getElementById('burger')
     const nav = document.querySelector('#nav-links')
@@ -51,38 +50,23 @@ export default {
       this.$router.push({ name: 'home' });
     },
 
-    
-    },
+    mounted() {
+      var selector = '.nl a';
 
-  mounted() {
-    var selector = '.nl a';
-
-    $(selector).on('click', function(){
-      $(selector).removeClass('active');
-      $(this).addClass('active');
-});
-
-
-
+      $(selector).on('click', function() {
+        $(selector).removeClass('active');
+        $(this).addClass('active');
+      });
+    }
   }
-
-    
-    
-  
-    
 }
-
-
-
 </script>
 
 <style>
 
-a.active {
-    color: red;
+.activeLink {
+  color:blue !important;
 }
-
-
 
 body {
  margin: 0px;
@@ -138,16 +122,13 @@ nav {
     justify-content: flex-end;
     display: flex;
     opacity: 1;
-
   }
+  
   ul#nav-links a {
     display: flex;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     color: #fefefe;
-
-
-  
   }
 
   ul#nav-links a:hover {
