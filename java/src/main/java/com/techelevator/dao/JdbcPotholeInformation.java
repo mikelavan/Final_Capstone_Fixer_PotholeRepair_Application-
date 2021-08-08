@@ -41,7 +41,10 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     @Override
     public void deletePothole(int id) {
-        String sql = "DELETE FROM pothole_information WHERE id = ?";
+        String sql = "DELETE FROM schedule WHERE pothole_id = ?";
+        jdbcTemplate.update(sql, id);
+
+        sql = "DELETE FROM pothole_information WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 

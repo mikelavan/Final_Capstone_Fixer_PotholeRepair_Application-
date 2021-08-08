@@ -26,6 +26,7 @@
                     <option>5</option>
                 </select>
                 <button v-on:click.prevent="updateSchedule(potholes.status, potholes.severity, potholes)" >Submit New Status</button>
+                <button v-on:click.prevent="deletePothole(potholes.potholeId)" v-if="potholes.status == 'Repaired'">Delete Repaired Pothole?</button>
             </form>
             <form v-if="changeToInspected">
                 
@@ -101,6 +102,18 @@ export default {
 				}
 			})
             },
+            
+            deletePothole(id) {
+				PotholeService.deletePothole(id).then(response => {
+					this.$store.commit("DELETE_POTHOLE", response);
+					location.reload();
+				}).catch(error => {
+					if(error.response.status == 400) {
+						console.log(error.response.status);
+					}
+				});
+			},
+
             checkForInspection(status){
                 if(status === 'Inspected'){
                     this.changeToInspected = true;
