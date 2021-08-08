@@ -19,8 +19,8 @@
         <li> <a  href="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </a> </li>
         <li> <a  href="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </a> </li>
         <li> <a  href="/logout" v-if="Object.keys(this.$store.state.user).length != 0"> Logout </a> </li>  
-        <li v-show="$store.state.user.authorities[0].name == 'ROLE_ADMIN'">Employee: {{$store.state.user.username}}</li>
-        <li v-show="$store.state.user.authorities[0].name == 'ROLE_USER'">User: {{$store.state.user.username}}</li>        
+        <li v-if="Object.keys(this.$store.state.user).length != 0 && $store.state.user.authorities[0].name == 'ROLE_ADMIN'">Employee: {{$store.state.user.username}}</li>
+        <li v-if="Object.keys(this.$store.state.user).length != 0 && $store.state.user.authorities[0].name == 'ROLE_USER'">User: {{$store.state.user.username}}</li>   
     </ul>
  </nav>
 </template>
