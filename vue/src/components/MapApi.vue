@@ -8,6 +8,7 @@
 					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
+					Current Status: {{marker.status}}<br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
