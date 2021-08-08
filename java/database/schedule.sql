@@ -7,14 +7,15 @@ CREATE TABLE schedule (
         date_reported DATE,
         date_inspected DATE,
         date_repaired DATE,
+        severity INT,
         
         CONSTRAINT pk_schedule_id PRIMARY KEY (schedule_id),
         CONSTRAINT fk_pothole_id FOREIGN KEY (pothole_id) REFERENCES pothole_information (id)
-        )
+        );
         
-INSERT INTO schedule (pothole_id) VALUES (1);
-INSERT INTO schedule (pothole_id) VALUES (2);
-INSERT INTO schedule (pothole_id) VALUES (3);
-INSERT INTO schedule (pothole_id) VALUES (4);
+INSERT INTO schedule (pothole_id, date_reported, severity) VALUES (1, CURRENT_DATE, 3);
+INSERT INTO schedule (pothole_id, date_reported, severity) VALUES (2, CURRENT_DATE, 3);
+INSERT INTO schedule (pothole_id, date_reported, severity) VALUES (3, CURRENT_DATE, 3);
+INSERT INTO schedule (pothole_id, date_reported, severity) VALUES (4, CURRENT_DATE, 3);
         
 
