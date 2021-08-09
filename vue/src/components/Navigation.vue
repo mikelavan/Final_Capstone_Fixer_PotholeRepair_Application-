@@ -63,7 +63,7 @@ export default {
 <style>
 
 .tools {
-  height: 100px;
+  height: 65px;
 }
 
 .activeLink {
