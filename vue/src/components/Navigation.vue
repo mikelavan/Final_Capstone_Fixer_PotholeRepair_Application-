@@ -9,9 +9,10 @@
     <div v-on:click="navToHome()" v-if="name" id="logo">
          {{ name }}
     </div>
-    <div v-else id="logo">
-        <img v-bind:src="logoImg" alt="Logo" />
-    </div>
+    <!-- <div class="logo">
+        <img v-bind:src="assets/logo.png" alt="Logo" />
+
+    </div> -->
     <ul class="nl" id="nav-links" >
         <li> <a v-on:click="changeActivePage('home')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.home }" href="/"> Home </a> </li>
         <li> <a v-on:click="changeActivePage('create')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/"> Create </a> </li>
