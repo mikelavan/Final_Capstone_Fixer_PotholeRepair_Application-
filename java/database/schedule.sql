@@ -7,7 +7,7 @@ CREATE TABLE schedule (
         date_reported DATE,
         date_inspected DATE,
         date_repaired DATE,
-        severity INT,
+        severity INT DEFAULT 0,
         
         CONSTRAINT pk_schedule_id PRIMARY KEY (schedule_id),
         CONSTRAINT fk_pothole_id FOREIGN KEY (pothole_id) REFERENCES pothole_information (id)
