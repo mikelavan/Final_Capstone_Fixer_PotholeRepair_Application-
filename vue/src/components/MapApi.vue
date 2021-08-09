@@ -12,6 +12,7 @@
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
+					<button v-on:click="openClaimForm(marker)" v-show="checkLoggedIn()">Submit Claim</button>
 				</map-info-window>
 			</div>
 			<!-- <map-info-window :lat="-23.344" :lng="129.036">
@@ -52,6 +53,9 @@
 				longitude: null,
 				//img
 			},
+			claim:  {
+				name: null
+			},
 			currentPosition: {
 				lat: null,
 				lng: null
@@ -82,11 +86,20 @@
 				}
 				checkForMap()
 			},
+			submitClaim() {
+			
+			},
 			checkUser() {
 				if(Object.keys(this.$store.state.user).length == 0 || Object.values(this.$store.state.user.authorities[0]).includes('ROLE_USER')) {
 					return false;
 				}
 				return true;
+			},
+			checkLoggedIn() {
+					if(Object.keys(this.$store.state.user).length == 0) {
+						return false;
+					}
+					return true;
 			},
 			deletePothole(id) {
 				PotholeService.deletePothole(id).then(response => {
@@ -158,7 +171,7 @@
 					el.dispatchEvent(evObj);
 				}
 			},
-			openScheduleForm(pothole) {
+			openClaimForm(pothole) {
 				
 				
 				console.log(pothole.potholeId);
@@ -175,7 +188,7 @@
 
 				let form = document.createElement('div');
 				form.style.width = '70%';
-				form.style.height = '40%';
+				form.style.height = '55%';
 				form.style.backgroundColor = '#EFEFEF';
 				form.style.position = 'fixed';
 				form.style.left = '0';
@@ -185,15 +198,17 @@
 				form.style.margin = 'auto';
 				form.style.zIndex = '10';
 				form.style.padding = '10px';
-				form.innerHTML = "<form> " +
-				"<h2>" + pothole.potholeId + "</h2><br><label for='status'>Status: </label>" +
-				"<select name='status' id='status' v-model='potholeStatus'>" +
-				"<option>" + pothole.status + "</option>" +
-				"<option>Not Scheduled</option>" +
-				"<option>Scheduled</option>" +
-				"<option>Inspected</option>" +
-				"<option>Repaired</option>" +
-				+ "</form>"
+				form.innerHTML =
+				"<h2>Pothole: " + pothole.potholeId + "</h2>" +
+				"<p>Describe the damage:</p><textarea style='width: 99.5%;  min-height: 25%;'></textarea><br><br>" + 
+				"<label for='name'>Name: </label><input type='text' class='claimName' style='width: 94%;' v-model='claim.name'/><br><br>" +
+				"<label for='number'>Phone Number: </label><input type='text' style='width:  88%;' /><br><br>" +
+				"<label for='email'>Email: </label><input type='email' style='width:  94%;' /><br><br>" + 
+				"<label for='date'>Date Occurred: </label> <input type='date' /><br><br>" + 
+				"<label for='year'>Vehicle Year: </label><input type='text' style='width: 89.5%;' /><br><br>"  + 
+				"<label for='model'>Vehicle Model: </label><input type='text' style='width: 88%;' /><br><br>" + 
+				"<label for='year'>Vehicle Make: </label><input type='text' style='width: 88.5%;' /><br><br>" + 
+				"<center><button type='submit' id='claimBtn'  style='font-size: 24px;' onclick='submitClaim()'>Submit Claim</button></center>";
 
 
 
