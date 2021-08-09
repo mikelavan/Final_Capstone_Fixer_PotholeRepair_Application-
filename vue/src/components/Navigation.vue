@@ -9,10 +9,7 @@
     <div v-on:click="navToHome()" v-if="name" id="logo">
          {{ name }}
     </div>
-    <!-- <div class="logo">
-        <img v-bind:src="assets/logo.png" alt="Logo" />
-
-    </div> -->
+    <div> <img src="../../assets/logo.png" class="tools" alt="tools logo"/></div>
     <ul class="nl" id="nav-links" >
         <li> <a v-on:click="changeActivePage('home')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.home }" href="/"> Home </a> </li>
         <li> <a v-on:click="changeActivePage('create')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/"> Create </a> </li>
@@ -65,6 +62,10 @@ export default {
 
 <style>
 
+.tools {
+  height: 100px;
+}
+
 .activeLink {
   color:blue !important;
 }
@@ -93,6 +94,10 @@ nav {
 }
 
 @media only screen and (max-width: 3440px) {
+
+  .tools {
+    padding-right: 40px;
+  }
 
 nav {
     display: flex;
@@ -209,7 +214,7 @@ nav {
 
   div#burger {
     display: block;
-    width: 40%;
+    /* width: 40%; */
     padding: 25px;
     position: relative;
     z-index: 2;
