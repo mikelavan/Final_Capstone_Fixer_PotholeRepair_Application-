@@ -1,7 +1,7 @@
     <template>
   <div class="review">
     <div id="potholesReview" v-for="potholes in $store.state.potholes" :key="potholes.id">
-        <ul>
+        <ul id="info">
             <li>Date Created: {{ potholes.dateCreated }}</li>
             <li>Latitude: {{ potholes.latitude }}</li>
             <li>Longitude: {{ potholes.longitude }}</li>
@@ -27,10 +27,11 @@
                 </select>
                 <button v-on:click.prevent="updateSchedule(potholes.status, potholes.severity, potholes)" >Submit New Status</button>
                 <button v-on:click.prevent="deletePothole(potholes.potholeId)" v-if="potholes.status == 'Repaired'">Delete Repaired Pothole?</button>
+                <hr>
             </form>
             <form v-if="changeToInspected">
                 
-            </form>    
+            </form> 
         </ul>
         
     </div>
@@ -137,26 +138,67 @@ export default {
 </script>
 
 <style>
+
+
+
+hr {
+    width: 195%;
+    justify-content: center; 
+    margin-top: 50px;
+    padding-left: 0%;
+    padding-right: 0%;
+
+}
+#date {
+    justify-items: end;
+}
 .review {
     position: absolute;
-    top: 9vh;
+    top: 6vh;
     font-family: 'Raleway', sans-serif;
     background-color: #FDF5E6;
     width: 100%;
 }
 
-#potholesReview {
+
+#info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin-top: 5%;
 
 
 }
-@media  only screen and (max-width: 768px) {
+@media  only screen and (max-width: 767px) {
     .review {
-        top: 13vh;
+        top: 9vh;
+        padding-top: 20px;
+        width:110% ;
     }
 
-#potholesReview {
+    #info {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 5%;
+
+
+}
+
+hr {
+    width: 90%;
+    justify-content: center; 
+    margin-top: 50px;
+    margin-left: 0%;
+    margin-right: 0%
+
+}
+
+@media  only screen and (max-width: 320px) {
+
+.review {
+        top: 15vh;
+    }
 
 }
 }
+
 </style>

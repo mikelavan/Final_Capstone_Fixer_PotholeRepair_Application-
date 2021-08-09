@@ -287,7 +287,7 @@ to {
   nav {
 
     display: flex;
-    width: 100%;
+    width: 110%;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
