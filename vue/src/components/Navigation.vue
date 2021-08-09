@@ -62,9 +62,15 @@ export default {
 
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 .tools {
   height: 65px;
 }
+
+  ul#nav-links li {
+    color: white;
+  }
 
 .activeLink {
   color:blue !important;
@@ -88,7 +94,7 @@ nav {
     align-items: center;
     background-color: #DDA0DD;
     min-height: 8vh;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
     position: relative;
     z-index: 2;
 }
@@ -107,7 +113,6 @@ nav {
     background-color: #DDA0DD;
     min-height: 8vh;
     width: 100vw;
-    font-family: 'Montserrat', sans-serif;
     position: fixed;
     z-index: 2;
 }
@@ -133,7 +138,6 @@ nav {
   ul#nav-links a {
     display: flex;
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
     color: #fefefe;
   }
 
@@ -168,7 +172,6 @@ nav {
     align-items: center;
     background-color: #DDA0DD;
     min-height: 8vh;
-    font-family: 'Montserrat', sans-serif;
     position: fixed;
     z-index: 2;
   }
@@ -290,7 +293,6 @@ to {
     align-items: center;
     background-color: #DDA0DD;
     min-height: 8vh;
-    font-family: 'Montserrat', sans-serif;
     position: fixed;
     z-index: 2;
   }

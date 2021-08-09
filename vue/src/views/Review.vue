@@ -140,7 +140,7 @@ export default {
 .review {
     position: absolute;
     top: 9vh;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Raleway', sans-serif;
     background-color: #FDF5E6;
     width: 100%;
 }

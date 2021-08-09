@@ -94,6 +94,12 @@ export default {
 
 <style>
 
+.text-center {
+    font-family: 'Raleway', sans-serif;
+
+
+}
+
 
 
 @media  only screen and (max-width: 766px) {
@@ -116,7 +122,6 @@ h1 {
   justify-content: center;
   padding-top: 40px;
   color: #8C55AA;
-  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
   margin-top: 35%;
@@ -137,7 +142,6 @@ h1 {
     border: 5px solid rgba(0, 0, 0, 0.02);
     margin-top: 15%;
     margin-bottom: 50px;
-    font-family: 'Ubuntu', sans-serif;
     display: flex;
   justify-content: center;
   padding: 30px;
@@ -160,7 +164,6 @@ h1 {
   color: #fff;
   background: linear-gradient(to right, #9C27B0, #E040FB);
   border: 0;
-  font-family: 'Ubuntu', sans-serif;
   font-size: 15px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
@@ -202,7 +205,6 @@ h1 {
   justify-content: center;
   padding-top: 40px;
   color: #8C55AA;
-  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 35;
   margin-bottom: 5% ;
@@ -226,7 +228,6 @@ h1 {
     height: 1px;
     border: 5px solid rgba(0, 0, 0, 0.02);
     margin-bottom: 50px;
-    font-family: 'Ubuntu', sans-serif;
     display: flex;
   justify-content: center;
   padding: 30px;
@@ -252,7 +253,6 @@ h1 {
   color: #fff;
   background: linear-gradient(to right, #9C27B0, #E040FB);
   border: 0;
-  font-family: 'Ubuntu', sans-serif;
   font-size: 17px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
@@ -300,7 +300,6 @@ h1 {
   justify-content: center;
   padding-top: 40px;
   color: #8C55AA;
-  font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
   margin-bottom: 5% ;
@@ -315,7 +314,6 @@ h1 {
   color: #fff;
   background: linear-gradient(to right, #9C27B0, #E040FB);
   border: 0;
-  font-family: 'Ubuntu', sans-serif;
   font-size: 15px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   margin-bottom: 35%;
