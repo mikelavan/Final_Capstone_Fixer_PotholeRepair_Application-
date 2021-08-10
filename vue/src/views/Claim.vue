@@ -6,7 +6,7 @@
           <br>
               <p> Describe the damage:</p><textarea style='width: 99.5%;  min-height: 25%;' v-model='description'></textarea><br><br>  
 				<label for='name'>Name: </label><input type='text' class='claimName' style='width: 94%;' v-model='name'/><br><br>
-				<label for='number'>Phone Number: </label><input type='text' style='width:  88%;' v-model='number' /><br><br> 
+				<label for='number'>Phone Number: </label><input type='text' style='width:  88%;' v-model='phoneNumber' /><br><br> 
 				<label for='email'>Email: </label><input type='email' style='width:  94%;' v-model='email'/><br><br> 
 				<label for='date'>Date Occurred: </label> <input type='date' v-model='dateOccured' /><br><br>
 				<label for='year'> Vehicle Year: </label><input type='text' style='width: 89.5%;' v-model='year'/><br><br>
@@ -23,10 +23,10 @@ export default {
     name: 'claim',
     data() {
         return {  
-                pothole_id: null,
+                potholeId: this.$route.params.id,
                 description: null,
                 name: null,
-                number: '',
+                phoneNumber: '',
                 email: '',
                 dateOccured: '',
                 year: '',
@@ -38,7 +38,7 @@ export default {
         methods: {
             submitClaim(){
                 const newClaim = {
-                pothole_id: this.pothole_id,
+                potholeId: this.potholeId,
                 description: this.description,
                 name: this.name,
                 number: this.number,
@@ -61,16 +61,7 @@ export default {
 				}
 			})
             }
-        },
-
-        computed: {
-            claim() {
-           const pothole_id = this.$route.params.id;
-           return this.$store.state.potholes.find( pothole => {
-               return pothole.id === pothole_id;
-           });
-       }
-   }
+        }
 }
 </script>
 
