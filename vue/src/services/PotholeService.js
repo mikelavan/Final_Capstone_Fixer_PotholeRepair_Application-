@@ -16,6 +16,10 @@ export default{
         return axios.post('/potholes', store.state.newReport)
     },
 
+    createClaim(claim) {
+        return axios.post(`/claim`, claim)
+    },
+
     schedule(id) {
         return axios.post('/schedule', id);
     },

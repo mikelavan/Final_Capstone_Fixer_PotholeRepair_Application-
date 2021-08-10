@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Claim from '../views/Claim.vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
@@ -58,6 +59,14 @@ const router = new Router({
       path: "/review",
       name: 'review',
       component: Review,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/claim/:id",
+      name: 'claim',
+      component: Claim,
       meta: {
         requiresAuth: false
       }

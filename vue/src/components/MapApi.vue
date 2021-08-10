@@ -12,7 +12,9 @@
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
-					<button v-on:click="openClaimForm(marker)" v-show="checkLoggedIn()">Submit Claim</button>
+					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Claim</button>
+                     </router-link>
 				</map-info-window>
 			</div>
 			<!-- <map-info-window :lat="-23.344" :lng="129.036">
