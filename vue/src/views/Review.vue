@@ -28,6 +28,7 @@
                 <button v-on:click.prevent="updateSchedule(potholes.status, potholes.severity, potholes)" >Submit New Status</button>
                 <button v-on:click.prevent="deletePothole(potholes.potholeId)" v-if="potholes.status == 'Repaired'">Delete Repaired Pothole?</button>
                 <hr>
+                <hr id="vert">
             </form>
             <form v-if="changeToInspected">
                 
@@ -141,38 +142,41 @@ export default {
 
 
 
-hr {
-    width: 195%;
-    justify-content: center; 
-    margin-top: 50px;
-    padding-left: 0%;
-    padding-right: 0%;
 
-}
+
+
 #date {
     justify-items: end;
 }
 .review {
     position: absolute;
-    top: 6vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    top: 8vh;
     font-family: 'Raleway', sans-serif;
     background-color: #FDF5E6;
     width: 100%;
+    /* height: 100%; */
 }
 
 
 #info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     margin-top: 5%;
+}
+
+#potholesReview {
+    display: flex;
+    /* justify-content: space-evenly; */
+    /* align-content: space-evenly; */
 
 
 }
 @media  only screen and (max-width: 767px) {
     .review {
         top: 9vh;
-        padding-top: 20px;
-        width:110% ;
+        padding-top: 40px;
+        width:200% ;
+        height: 200%;
     }
 
     #info {
@@ -186,7 +190,7 @@ hr {
 hr {
     width: 90%;
     justify-content: center; 
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 0%;
     margin-right: 0%
 
@@ -196,6 +200,8 @@ hr {
 
 .review {
         top: 15vh;
+        width: 250%;
+        height: 250%;
     }
 
 }
