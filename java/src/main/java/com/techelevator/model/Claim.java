@@ -14,7 +14,6 @@ public class Claim {
     private String vehicleModel;
     private String vehicleMake;
 
-
     public int getClaimId() {
         return claimId;
     }
@@ -94,7 +93,4 @@ public class Claim {
     public void setVehicleMake(String vehicleMake) {
         this.vehicleMake = vehicleMake;
     }
-
-
-
 }

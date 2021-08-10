@@ -4,14 +4,14 @@
           <br>
           <br>
           <br>
-              <p> Describe the damage:</p><textarea style='width: 99.5%;  min-height: 25%;' v-model='description'></textarea><br><br>  
-				<label for='name'>Name: </label><input type='text' class='claimName' style='width: 94%;' v-model='name'/><br><br>
-				<label for='number'>Phone Number: </label><input type='text' style='width:  88%;' v-model='phoneNumber' /><br><br> 
-				<label for='email'>Email: </label><input type='email' style='width:  94%;' v-model='email'/><br><br> 
-				<label for='date'>Date Occurred: </label> <input type='date' v-model='dateOccured' /><br><br>
-				<label for='year'> Vehicle Year: </label><input type='text' style='width: 89.5%;' v-model='year'/><br><br>
-				<label for='model'>Vehicle Model: </label><input type='text' style='width: 88%;' v-model='vehicleModel'/><br><br> 
-				<label for='make'>Vehicle Make: </label><input type='text' style='width: 88.5%;' v-model='vehicleMake' /><br><br>
+              <p> Describe the damage:</p><textarea v-model='description'></textarea><br><br>  
+				<label for='name'>Name: </label><input type='text' class='claimName' v-model='name'/><br><br>
+				<label for='number'>Phone Number: </label><input type='text' v-model='phoneNumber' /><br><br> 
+				<label for='email'>Email: </label><input type='email' v-model='email'/><br><br> 
+				<label for='date'>Date Occurred: </label> <input type='date' v-model='dateOccurred' /><br><br>
+				<label for='year'> Vehicle Year: </label><input type='text' v-model='year'/><br><br>
+				<label for='model'>Vehicle Model: </label><input type='text' v-model='vehicleModel'/><br><br> 
+				<label for='make'>Vehicle Make: </label><input type='text' v-model='vehicleMake' /><br><br>
 				<center><button type='submit' id='claimBtn'  style='font-size: 24px;' v-on:click.prevent='submitClaim()'>Submit Claim</button></center>;
       </form>
   </div>
@@ -28,7 +28,7 @@ export default {
                 name: null,
                 phoneNumber: '',
                 email: '',
-                dateOccured: '',
+                dateOccurred: '',
                 year: '',
                 vehicleModel: '',
                 vehicleMake:''         
@@ -41,9 +41,9 @@ export default {
                 potholeId: this.potholeId,
                 description: this.description,
                 name: this.name,
-                number: this.number,
+                phoneNumber: this.phoneNumber,
                 email: this.email,
-                dateOccured: this.dateOccured,
+                dateOccurred: this.dateOccurred,
                 year: this.year,
                 vehicleModel: this.vehicleModel,
                 vehicleMake: this.vehicleMake  
@@ -66,7 +66,18 @@ export default {
 </script>
 
 <style scoped>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+    *  {  font-family: 'Raleway', sans-serif; }
+
     form{
         margin-top: 50px;
+        padding: 5%;
+        width: 90%;
     }
+
+    form input { width: 100%; }
+
+    textarea { width: 100%; }
+
 </style>
