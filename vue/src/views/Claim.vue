@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class = "page">
       <form id="case">
           <br>
           <br>
+          <h1>Submit a Claim</h1>
           <br>
               <p> Describe the damage:</p><textarea v-model='description'></textarea><br><br>  
 				<label for='name'>Name: </label><input type='text' class='claimName' v-model='name'/><br><br>
@@ -70,14 +71,45 @@ export default {
 
     *  {  font-family: 'Raleway', sans-serif; }
 
+    .page {
+        background-color: #FDF5E6;
+    }
+
+    #claimBtn {
+        display: flex;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 10px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  /* padding-top: 10px; */
+  width: 25%;
+  height: 6%;
+    }
+
     form{
-        margin-top: 50px;
+        /* margin-top: 20px; */
         padding: 5%;
         width: 90%;
     }
 
+    h1 {
+        margin-top: 0%;
+    }
+
     form input { width: 100%; }
 
-    textarea { width: 100%; }
+    textarea {
+     width: 100%; 
+     
+    }
+
+    form#case {
+    }
 
 </style>
