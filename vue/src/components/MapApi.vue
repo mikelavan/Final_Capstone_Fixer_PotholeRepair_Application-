@@ -14,6 +14,9 @@
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
 					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
 						<button v-show="checkLoggedIn()">Submit Claim</button>
+                    </router-link>
+					<router-link v-bind:to="{ name: 'report', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Picture</button>
                      </router-link>
 				</map-info-window>
 			</div>
@@ -341,7 +344,7 @@
 				// alert(event.latLng);
 				if(this.$store.state.user.authorities.some(name => name.name === 'ROLE_EMPLOYEE' || name.name === 'ROLE_USER' || name.name === 'ROLE_ADMIN')) {
 					let contentString = "<span style='font-size: 24px;'>Would you like to submit this pothole report?</span><br>" + 
-					"<br><center><input type='button' id='submit-report' value='Submit' onclick='createReport()'></center>";
+					"<br><center><input type='button' id='submit-report' value='Submit' onclick='createReport()'> </center>";
 					infoWindow = new window.google.maps.InfoWindow({
 						content: contentString,
 						position: event.latLng,
