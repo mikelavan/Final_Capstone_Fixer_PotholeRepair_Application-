@@ -173,10 +173,11 @@ export default {
 }
 @media  only screen and (max-width: 767px) {
     .review {
+        display: grid;
+        grid-template-columns: 1fr ;
         top: 9vh;
         padding-top: 40px;
-        width:200% ;
-        height: 200%;
+        width:130% ;
     }
 
     #info {
@@ -187,22 +188,18 @@ export default {
 
 }
 
-hr {
-    width: 90%;
-    justify-content: center; 
-    margin-top: 30px;
-    margin-left: 0%;
-    margin-right: 0%
 
-}
 
 @media  only screen and (max-width: 320px) {
 
 .review {
-        top: 15vh;
-        width: 250%;
-        height: 250%;
+        top: 10vh;
+        width: 145%
     }
+
+hr {
+    /* width: 95%; */
+}
 
 }
 }

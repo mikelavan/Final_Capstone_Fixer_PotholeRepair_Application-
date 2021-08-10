@@ -109,7 +109,9 @@ nav {
 @media only screen and (max-width: 3440px) {
 
   .tools {
+    display:flex;
     padding-right: 40px;
+    order: -3;
   }
 
 nav {
