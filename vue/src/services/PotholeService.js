@@ -39,5 +39,9 @@ export default{
 
     uploadImage(id) {
         return axios.put(`/potholes/${id}`, '../../assets/pothole_test.jpg');
+    },
+
+    submitPicture(formData, options, id) {
+        axios.put(`/potholes/${id}`, formData, options);
     }
 }

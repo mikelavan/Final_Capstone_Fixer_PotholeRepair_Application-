@@ -4,9 +4,12 @@ import com.techelevator.model.PotholeInformation;
 import com.techelevator.model.Schedule;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.support.SqlLobValue;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -84,5 +87,13 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
         potholes.setSeverity(row.getInt("severity"));
 
         return potholes;
+    }
+
+    @Override
+    public void updatePicture(MultipartFile file, int id) throws IOException {
+        SqlLobValue data = new SqlLobValue(file.getBytes());
+        String sql = "UPDATE pothole_information SET picture = ? WHERE id = ?";
+
+        jdbcTemplate.update(sql, data, id);
     }
 }

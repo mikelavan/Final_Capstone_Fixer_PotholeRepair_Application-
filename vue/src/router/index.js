@@ -7,6 +7,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import Review from '../views/Review.vue'
 import store from '../store/index'
+import Report from '../views/Report.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/claim/:id",
       name: 'claim',
       component: Claim,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/report/:id",
+      name: "report",
+      component: Report,
       meta: {
         requiresAuth: false
       }

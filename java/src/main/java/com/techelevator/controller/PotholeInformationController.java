@@ -7,8 +7,10 @@ import com.techelevator.model.Schedule;
 import com.techelevator.services.PotholeInformationService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @CrossOrigin
@@ -44,5 +46,11 @@ public class PotholeInformationController {
 //    @PreAuthorize("hasRole('EMPLOYEE')")
     public void updateSchedule(@Valid @RequestBody PotholeInformation pothole) {
         potholeService.updateSeverity(pothole);
+    }
+
+    @RequestMapping(path="/potholes/{id}", method = RequestMethod.PUT)
+//    @PreAuthorize("hasRole('EMPLOYEE')")
+    public void updatePicture(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
+        potholeService.updatePicture(file, id);
     }
 }

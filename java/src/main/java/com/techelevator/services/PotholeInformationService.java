@@ -3,7 +3,9 @@ package com.techelevator.services;
 import com.techelevator.dao.JdbcPotholeInformation;
 import com.techelevator.model.PotholeInformation;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
@@ -25,5 +27,9 @@ public class PotholeInformationService {
     public void create(PotholeInformation pothole) { potholeInformation.createReport(pothole); }
 
     public void updateSeverity(PotholeInformation pothole) {potholeInformation.updateSeverity(pothole);}
+
+    public void updatePicture(MultipartFile file, int id) throws IOException {
+        potholeInformation.updatePicture(file, id);
+    }
 
 }
