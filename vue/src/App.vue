@@ -12,12 +12,6 @@
           
 
         },
-
-        {
-          name: 'Create',
-          link: '/',
-          dropdown: false,          
-        },
           
         {
 

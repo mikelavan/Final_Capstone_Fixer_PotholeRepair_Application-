@@ -12,7 +12,6 @@
     <div> <img src="../../assets/logo.png" class="tools" alt="tools logo"/></div>
     <ul class="nl" id="nav-links" >
         <li><router-link to="/"> Home </router-link></li>
-        <li><router-link to="/"> Create </router-link></li>
         <li><router-link to="/review"> Review </router-link></li>
         <li><router-link to="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </router-link></li>
         <li><router-link to="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </router-link></li> 
