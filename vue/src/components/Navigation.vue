@@ -11,12 +11,11 @@
     </div>
     <div> <img src="../../assets/logo.png" class="tools" alt="tools logo"/></div>
     <ul class="nl" id="nav-links" >
-        <li> <a v-on:click="changeActivePage('home')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.home }" href="/"> Home </a> </li>
-        <li> <a v-on:click="changeActivePage('create')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/"> Create </a> </li>
-        <li> <a v-on:click="changeActivePage('review')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/review"> Review </a> </li>
-        <li> <a v-on:click="changeActivePage('register')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </a> </li>
-        <li> <a v-on:click="changeActivePage('login')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </a> </li>
-        <li> <a v-on:click="changeActivePage('logout')" v-bind:class="{ activeLink: this.$store.state.linkIsActive.create }" href="/logout" v-if="Object.keys(this.$store.state.user).length != 0"> Logout </a> </li>  
+        <li><router-link to="/"> Home </router-link></li>
+        <li><router-link to="/"> Create </router-link></li>
+        <li><router-link to="/review"> Review </router-link></li>
+        <li><router-link to="/register" v-if="Object.keys(this.$store.state.user).length == 0"> Register </router-link></li>
+        <li><router-link to="/login" v-if="Object.keys(this.$store.state.user).length == 0"> Login </router-link></li> 
         <li v-if="Object.keys(this.$store.state.user).length != 0 && this.$store.state.user.authorities[0].name == 'ROLE_EMPLOYEE'">Employee: {{$store.state.user.username}}</li>
         <li v-if="Object.keys(this.$store.state.user).length != 0 && this.$store.state.user.authorities[0].name == 'ROLE_USER'">User: {{$store.state.user.username}}</li>   
     </ul>
@@ -68,13 +67,20 @@ export default {
   height: 65px;
 }
 
+
+a.router-link-exact-active {
+  background-color: #8C55AA;
+  color: white;
+  /*font-weight: bold; */
+}
+
   ul#nav-links li {
     color: white;
   }
 
-.activeLink {
+/* .activeLink {
   color:blue !important;
-}
+} */
 
 body {
  margin: 0px;
