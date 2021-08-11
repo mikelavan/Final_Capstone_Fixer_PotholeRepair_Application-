@@ -140,12 +140,6 @@ export default {
 
 <style>
 
-#reviewHeader {
-    display:grid;
-    grid-template-rows: 1fr ;
-    margin-right: 100%;
-}
-
 #date {
     justify-items: end;
 }
@@ -154,7 +148,6 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-items: center;
     top: 8vh;
     font-family: 'Raleway', sans-serif;
     background-color: #FDF5E6;
@@ -179,9 +172,9 @@ export default {
         display: grid;
         grid-template-columns: 1fr ;
         align-items: center;
-        justify-items: center;
         top: 9vh;
         padding-top: 40px;
+        width: 70vh;
     }
 
     #info {
