@@ -7,7 +7,7 @@
 
 				<map-info-window v-if="marker.severity == 0" class='zero' :lat="marker.latitude + .00001" :lng="marker.longitude">
 					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
-					<!-- <img src="data:image/jpg;base64, " /><br> -->
+					<img v-bind:src="marker.picture" /><br>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>

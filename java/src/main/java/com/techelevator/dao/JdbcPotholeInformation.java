@@ -59,10 +59,12 @@ public class JdbcPotholeInformation implements PotholeInformationDAO, ResultSetE
                 p.setLatitude(rs.getDouble(4));
                 p.setSeverity(rs.getInt(5));
                 p.setStatus(rs.getString(6));
-//                byte[] picture = rs.getBytes(7);
-//                Base64.Encoder encoder =  Base64.getEncoder();
-//                String picture = encoder.encodeToString(rs.getBytes(7));
-//                p.setPicture(rs.getBytes(7).decode);
+                if (rs.getBytes(7) != null) {
+                    byte[] picture = rs.getBytes(7);
+
+                    String pictureString = Base64.getEncoder().encodeToString(picture);
+                    p.setPicture("data:image/jpg;base64, " + pictureString);
+                }
 
                 return p;
             }
