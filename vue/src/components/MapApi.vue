@@ -22,7 +22,7 @@
                      </router-link>
 				</map-info-window>
 
-				<map-info-window v-if="marker.severity == 5" class='red' :lat="marker.latitude + .00001" :lng="marker.longitude">
+				<map-info-window v-if="marker.severity == 5" class='five' :lat="marker.latitude + .00001" :lng="marker.longitude">
 					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
@@ -39,7 +39,7 @@
                      </router-link>
 				</map-info-window>
 
-				<map-info-window v-if="marker.severity == 4" class='blue' :lat="marker.latitude + .00001" :lng="marker.longitude">
+				<map-info-window v-if="marker.severity == 4" class='four' :lat="marker.latitude + .00001" :lng="marker.longitude">
 					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
@@ -56,7 +56,41 @@
                      </router-link>
 				</map-info-window>
 
-				<map-info-window v-if="marker.severity == 3" class='green' :lat="marker.latitude + .00001" :lng="marker.longitude">
+				<map-info-window v-if="marker.severity == 3" class='three' :lat="marker.latitude + .00001" :lng="marker.longitude">
+					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					Date Reported: {{marker.dateCreated}}<br>
+					Pothole ID: {{marker.potholeId}}<br>
+					Current Status: {{marker.status}}<br>
+					Severity: {{marker.severity}}<br>
+					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
+					v-show="checkUser()">Delete</button>
+					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
+					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Claim</button>
+                    </router-link>
+					<router-link v-bind:to="{ name: 'report', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Picture</button>
+                     </router-link>
+				</map-info-window>
+
+				<map-info-window v-if="marker.severity == 2" class='two' :lat="marker.latitude + .00001" :lng="marker.longitude">
+					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					Date Reported: {{marker.dateCreated}}<br>
+					Pothole ID: {{marker.potholeId}}<br>
+					Current Status: {{marker.status}}<br>
+					Severity: {{marker.severity}}<br>
+					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
+					v-show="checkUser()">Delete</button>
+					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
+					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Claim</button>
+                    </router-link>
+					<router-link v-bind:to="{ name: 'report', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Picture</button>
+                     </router-link>
+				</map-info-window>
+
+				<map-info-window v-if="marker.severity == 1" class='one' :lat="marker.latitude + .00001" :lng="marker.longitude">
 					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
@@ -483,16 +517,24 @@
 .zero{
 	border: white
 }
-.red{
+.five{
 	border: 5px solid red;
 }
 
-.blue{
-	border: 5px solid blue;
+.four{
+	border: 5px solid orange;
 }
 
-.green{
-	border: 5px solid green;
+.three{
+	border: 5px solid yellow;
+}
+
+.two{
+	border: 5px solid teal
+}
+
+.one{
+	border: 5px solid blue;
 }
 
 </style>
