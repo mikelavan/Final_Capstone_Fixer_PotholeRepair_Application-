@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="createHeader">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -96,6 +96,7 @@ export default {
 
 .text-center {
     font-family: 'Raleway', sans-serif;
+    height: 100vh;
 
 
 }
@@ -117,7 +118,7 @@ export default {
 
 
         
-h1 {
+.createHeader {
   display: flex;
   justify-content: center;
   padding-top: 40px;
@@ -200,7 +201,7 @@ h1 {
 }
 
 
-h1 {
+.createHeader {
   display: flex;
   justify-content: center;
   padding-top: 40px;
@@ -292,10 +293,10 @@ h1 {
   z-index: 0;
   padding-bottom: 20px;
   overflow: hidden;
-  height: 100%;
+  height: 125vh;
 }
 
-  h1 {
+  .createHeader {
   display: flex;
   justify-content: center;
   padding-top: 40px;

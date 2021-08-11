@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="loginPage">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -110,19 +110,20 @@ export default {
   margin: 0 auto;
   
 }
-.text-center {
+.loginPage {
   font-family: 'Raleway', sans-serif;
 
 }
 
-@media  only screen and (min-width: 765px) {
+@media  only screen and (max-width: 3444px) {
 
-  .text-center {
+  .loginPage {
   display: flex; 
   justify-content: center ;
   background-color: #FDF5E6;
   border-radius: 1.5em;
   z-index: 0;
+  height: 110vh;
 }
 
 h1 {
@@ -178,14 +179,14 @@ h1 {
   color: #fff;
   background: linear-gradient(to right, #9C27B0, #E040FB);
   border: 0;
-  font-size: 17px;
+  font-size: 18px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
-  /* padding-top: 1; */
   width: 100%;
   height: 7%;
   padding-bottom: 10%;
-  padding-top: 10%
+  padding-top: 10%;
+  
 
 }
 
@@ -209,7 +210,7 @@ h1 {
 @media  only screen and (max-width: 766px) {
 
 
-  .text-center {
+  .loginPage {
   display: flex;
   justify-content: center;
   background-color: #FDF5E6;
@@ -217,7 +218,7 @@ h1 {
   z-index: 0;
   padding-bottom: 20px;
   overflow: hidden;
-  height: 110vh;
+  height: 100vh;
 }
         
 h1 {
@@ -269,7 +270,7 @@ h1 {
   font-size: 15px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
-  padding-top: 12px;
+  padding-top: 20px;
   width: 100%;
   height: 6%;
 
@@ -295,7 +296,7 @@ h1 {
 
 @media  only screen and (max-width: 330px) {
 
-  .text-center {
+  .loginPage {
   display: flex;
   justify-content: center;
   background-color: #FDF5E6;
@@ -303,8 +304,14 @@ h1 {
   z-index: 0;
   padding-bottom: 20px;
   overflow: hidden;
-  height: 100%;
+  height: 100vh;
 }
+
+.needAccount {
+  margin-bottom: -20px;
+    }
+
+
 
 
   .sign-in {
@@ -318,13 +325,24 @@ h1 {
   font-family: 'Ubuntu', sans-serif;
   font-size: 15px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-  margin-bottom: 35%;
+  /* margin-bottom: 50%; */
   box-sizing: border-box;
   padding-top: 12px;
+  padding-bottom: 15px;
   width: 100%;
-  height: 6%;
+  height: 5%;
 
 }
+
+  .loginPage {
+  display: flex; 
+  justify-content: center ;
+  background-color: #FDF5E6;
+  border-radius: 1.5em;
+  z-index: 0;
+  height: 100vh;
+}
+
 
 }
 

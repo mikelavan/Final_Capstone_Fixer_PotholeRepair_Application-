@@ -3,7 +3,7 @@
       <form id="case">
           <br>
           <br>
-          <h1>Submit a Claim</h1>
+          <h1 class="claimHeader">Submit a Claim</h1>
           <br>
               <p> Describe the damage:</p><textarea v-model='description'></textarea><br><br>  
 				<label for='name'>Name: </label><input type='text' class='claimName' v-model='name'/><br><br>
@@ -13,7 +13,7 @@
 				<label for='year'> Vehicle Year: </label><input type='text' v-model='year'/><br><br>
 				<label for='model'>Vehicle Model: </label><input type='text' v-model='vehicleModel'/><br><br> 
 				<label for='make'>Vehicle Make: </label><input type='text' v-model='vehicleMake' /><br><br>
-				<center><button type='submit' id='claimBtn'  style='font-size: 24px;' v-on:click.prevent='submitClaim()'>Submit Claim</button></center>;
+				<center><button type='submit' id='claimBtn'  v-on:click.prevent='submitClaim()'>Submit Claim</button></center>;
       </form>
   </div>
 </template>
@@ -73,7 +73,9 @@ export default {
 
     .page {
         background-color: #FDF5E6;
+        
     }
+
 
     #claimBtn {
         display: flex;
@@ -83,23 +85,29 @@ export default {
   color: #fff;
   background: linear-gradient(to right, #9C27B0, #E040FB);
   border: 0;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 10px;
+  font-size: 15px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
-  /* padding-top: 10px; */
-  width: 25%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 3%;
+  width: 20%;
   height: 6%;
     }
+
 
     form{
         /* margin-top: 20px; */
         padding: 5%;
         width: 90%;
+        height: 100%;
     }
 
-    h1 {
-        margin-top: 0%;
+    .claimHeader {
+        display: flex;
+        color: #8C55AA;
+        padding-top: 20px;
+        justify-content: center;
     }
 
     form input { width: 100%; }
@@ -111,5 +119,33 @@ export default {
 
     form#case {
     }
+
+    @media  only screen and (max-width: 766px) {
+
+        #claimBtn {
+    display: flex;
+    font-size: 15px;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    padding-top: 12px;
+    padding-bottom: 15px;
+    width: 40%;
+    height: 6%;
+    }
+
+    .claimHeader {
+        margin-top: 3%;
+        padding-top: 15%;
+    }
+
+        
+    }
+
 
 </style>

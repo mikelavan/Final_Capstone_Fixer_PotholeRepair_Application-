@@ -69,8 +69,15 @@ export default {
 
 
 a.router-link-exact-active {
+  display: flex;
+  justify-content: center;
   background-color: #8C55AA;
   color: white;
+  width: 95px;
+  border-radius: 10pt;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  /* height: 20px; */
   /*font-weight: bold; */
 }
 
@@ -304,6 +311,20 @@ to {
     position: fixed;
     z-index: 2;
   }
+
+  a.router-link-exact-active {
+  display: flex;
+  justify-content: center;
+  background-color: #8C55AA;
+  color: white;
+  width: 100px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 10pt;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
 
   ul#nav-links {
     position: absolute;
