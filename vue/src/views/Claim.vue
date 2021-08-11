@@ -97,16 +97,16 @@ export default {
 
 
     form{
-        /* margin-top: 20px; */
-        padding: 5%;
+        padding-left: 70px;
         width: 90%;
-        height: 100%;
+        height: 130vh;
     }
 
     .claimHeader {
         display: flex;
         color: #8C55AA;
-        padding-top: 20px;
+        margin-top: 10px;
+        padding-top: 50px;
         justify-content: center;
     }
 
@@ -140,8 +140,14 @@ export default {
     }
 
     .claimHeader {
-        margin-top: 3%;
+        margin-top: 10%;
         padding-top: 15%;
+    }
+
+    form{
+        padding-left: 20px;
+        width: 90%;
+        /* height: 10vh; */
     }
 
         

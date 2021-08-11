@@ -134,7 +134,7 @@ h1 {
   font-weight: bold;
   font-size: 35;
   margin-bottom: 5% ;
-  margin-top: 40%;
+  margin-top: 30%;
 
 
 }

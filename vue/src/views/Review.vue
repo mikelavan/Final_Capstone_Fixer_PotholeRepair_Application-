@@ -1,4 +1,4 @@
-    <template>
+<template>
   <div class="review">
     <div id="potholesReview" v-for="potholes in $store.state.potholes" :key="potholes.id">
         <ul id="info">
@@ -140,6 +140,11 @@ export default {
 
 <style>
 
+#reviewHeader {
+    display:grid;
+    grid-template-rows: 1fr ;
+    margin-right: 100%;
+}
 
 
 
