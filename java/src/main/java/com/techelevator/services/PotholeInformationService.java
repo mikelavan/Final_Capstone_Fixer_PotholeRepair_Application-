@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PotholeInformationService {
@@ -18,7 +19,7 @@ public class PotholeInformationService {
         this.potholeInformation = potholeInformation;
     }
 
-    public ArrayList<PotholeInformation> list() {
+    public List<PotholeInformation> list() {
         return potholeInformation.getPotholes();
     }
 

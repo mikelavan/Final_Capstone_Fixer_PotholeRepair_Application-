@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -25,8 +26,8 @@ public class PotholeInformationController {
     }
 
     @RequestMapping(path="/potholes", method = RequestMethod.GET)
-    public ArrayList<PotholeInformation> listPotholes() {
-        ArrayList<PotholeInformation> potholes = potholeService.list();
+    public List<PotholeInformation> listPotholes() {
+        List<PotholeInformation> potholes = potholeService.list();
         return potholes;
     }
 

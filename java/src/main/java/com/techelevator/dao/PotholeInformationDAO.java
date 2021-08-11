@@ -5,9 +5,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface PotholeInformationDAO {
-    ArrayList<PotholeInformation> getPotholes();
+    List<PotholeInformation> getPotholes();
 
     void deletePothole(int id);
 

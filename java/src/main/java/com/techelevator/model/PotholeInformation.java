@@ -10,6 +10,15 @@ public class PotholeInformation {
     private double longitude;
     private double latitude;
     private String status;
+    private String picture;
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
     public String getStatus() {
         return status;
@@ -18,7 +27,7 @@ public class PotholeInformation {
     public void setStatus(String status) {
         this.status = status;
     }
-// private String pictureUrl;
+
     // private String address;
 
 

@@ -5,6 +5,7 @@ import com.techelevator.model.Schedule;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.SqlLobValue;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class JdbcPotholeInformation implements PotholeInformationDAO, ResultSetExtractor<String> {
@@ -30,21 +32,36 @@ public class JdbcPotholeInformation implements PotholeInformationDAO, ResultSetE
     }
 
     @Override
-    public ArrayList<PotholeInformation> getPotholes() {
-        String sql = "SELECT id, date_created, longitude, latitude, s.severity, s.status FROM pothole_information p " +
+    public List<PotholeInformation> getPotholes() {
+        String sql = "SELECT id, date_created, longitude, latitude, s.severity, s.status, picture FROM pothole_information p " +
                 "JOIN  schedule s ON p.id = s.pothole_id " +
                 "ORDER BY s.severity DESC";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
-        ArrayList<PotholeInformation> potholes = new ArrayList<>();
-        try {
-            while(result.next()) {
-                PotholeInformation potholeInformation = mapRowToPotholeInformation(result);
-                potholes.add(potholeInformation);
+//        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+//        ArrayList<PotholeInformation> potholes = new ArrayList<>();
+//        try {
+//            while(result.next()) {
+//                PotholeInformation potholeInformation = mapRowToPotholeInformation(result);
+//                potholes.add(potholeInformation);
+//            }
+//        }  catch (DataAccessException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        return potholes;
+
+        return jdbcTemplate.query(sql, new RowMapper<PotholeInformation>(){
+            @Override
+            public PotholeInformation mapRow(ResultSet rs, int rowNumber) throws SQLException {
+                PotholeInformation p = new PotholeInformation();
+                p.setPotholeId(rs.getInt(1));
+                p.setDateCreated(rs.getDate(2).toLocalDate());
+                p.setLongitude(rs.getDouble(3));
+                p.setLatitude(rs.getDouble(4));
+                p.setSeverity(rs.getInt(5));
+                p.setStatus(rs.getString(6));
+                p.setPicture(rs.getString(7));
+                return p;
             }
-        }  catch (DataAccessException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return potholes;
+        });
     }
 
     @Override
