@@ -146,22 +146,20 @@ export default {
     margin-right: 100%;
 }
 
-
-
-
-
 #date {
     justify-items: end;
 }
 .review {
     position: absolute;
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
     top: 8vh;
     font-family: 'Raleway', sans-serif;
     background-color: #FDF5E6;
     width: 100%;
-    /* height: 100%; */
+    min-height: 100vh; 
 }
 
 
@@ -180,9 +178,10 @@ export default {
     .review {
         display: grid;
         grid-template-columns: 1fr ;
+        align-items: center;
+        justify-items: center;
         top: 9vh;
         padding-top: 40px;
-        width:130% ;
     }
 
     #info {
@@ -199,7 +198,7 @@ export default {
 
 .review {
         top: 10vh;
-        width: 145%
+        width: 145%;
     }
 
 hr {
