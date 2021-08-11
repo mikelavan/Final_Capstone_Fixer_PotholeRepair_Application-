@@ -6,11 +6,11 @@
 				<map-marker  :lat="marker.latitude" :lng="marker.longitude"></map-marker>
 
 				<map-info-window v-if="marker.severity == 0" class='zero' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
-					Severity: {{marker.severity}}<br>
+					Severity:<b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
@@ -23,11 +23,11 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 5" class='five' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
-					Severity: {{marker.severity}}<br>
+					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
@@ -40,11 +40,11 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 4" class='four' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
-					Severity: {{marker.severity}}<br>
+					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
@@ -57,11 +57,11 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 3" class='three' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
-					Severity: {{marker.severity}}<br>
+					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
@@ -74,11 +74,11 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 2" class='two' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
-					Severity: {{marker.severity}}<br>
+					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
@@ -91,11 +91,11 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 1" class='one' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
-					Severity: {{marker.severity}}<br>
+					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
@@ -518,23 +518,23 @@
 	border: white
 }
 .five{
-	border: 5px solid red;
+	border: 10px solid #4B0082;
 }
 
 .four{
-	border: 5px solid orange;
+	border: 10px solid #8A2BE2	;
 }
 
 .three{
-	border: 5px solid yellow;
+	border: 10px solid #FF00FF	;
 }
 
 .two{
-	border: 5px solid teal
+	border: 10px solid #EE82EE	
 }
 
 .one{
-	border: 5px solid blue;
+	border: 10px solid #D8BFD8	;
 }
 
 </style>
