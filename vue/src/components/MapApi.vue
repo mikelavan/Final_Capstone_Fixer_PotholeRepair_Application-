@@ -2,13 +2,66 @@
 <div>
 	<div id="map" ref="map">
 		
-			<div id="markers" v-for="marker in $store.state.potholes" :key="marker.id" >
+			<div id="markers" v-for="marker in $store.state.potholes" :key="marker.id"> 
 				<map-marker  :lat="marker.latitude" :lng="marker.longitude"></map-marker>
-				<map-info-window :lat="marker.latitude + .00001" :lng="marker.longitude">
+
+				<map-info-window v-if="marker.severity == 0" class='zero' :lat="marker.latitude + .00001" :lng="marker.longitude">
 					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
+					Severity: {{marker.severity}}<br>
+					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
+					v-show="checkUser()">Delete</button>
+					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
+					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Claim</button>
+                    </router-link>
+					<router-link v-bind:to="{ name: 'report', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Picture</button>
+                     </router-link>
+				</map-info-window>
+
+				<map-info-window v-if="marker.severity == 5" class='red' :lat="marker.latitude + .00001" :lng="marker.longitude">
+					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					Date Reported: {{marker.dateCreated}}<br>
+					Pothole ID: {{marker.potholeId}}<br>
+					Current Status: {{marker.status}}<br>
+					Severity: {{marker.severity}}<br>
+					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
+					v-show="checkUser()">Delete</button>
+					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
+					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Claim</button>
+                    </router-link>
+					<router-link v-bind:to="{ name: 'report', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Picture</button>
+                     </router-link>
+				</map-info-window>
+
+				<map-info-window v-if="marker.severity == 4" class='blue' :lat="marker.latitude + .00001" :lng="marker.longitude">
+					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					Date Reported: {{marker.dateCreated}}<br>
+					Pothole ID: {{marker.potholeId}}<br>
+					Current Status: {{marker.status}}<br>
+					Severity: {{marker.severity}}<br>
+					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
+					v-show="checkUser()">Delete</button>
+					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
+					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Claim</button>
+                    </router-link>
+					<router-link v-bind:to="{ name: 'report', params: { id: marker.potholeId }}">
+						<button v-show="checkLoggedIn()">Submit Picture</button>
+                     </router-link>
+				</map-info-window>
+
+				<map-info-window v-if="marker.severity == 3" class='green' :lat="marker.latitude + .00001" :lng="marker.longitude">
+					<img src="../../assets/pothole_sample.jpg" width="285" height="160"/><br/>
+					Date Reported: {{marker.dateCreated}}<br>
+					Pothole ID: {{marker.potholeId}}<br>
+					Current Status: {{marker.status}}<br>
+					Severity: {{marker.severity}}<br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
@@ -226,6 +279,14 @@
 					console.log(response);
 				})   
 			},
+
+			checkSeverity(status){
+				if (status === 5){
+					return 'red';
+				} else if (status == 1){
+					return 'blue';
+				}
+			}
 			
 			
 		},
@@ -410,6 +471,28 @@
   /* padding-top: 1; */
   width: 100%;
   height: 7%;
+}
+
+/* .gm-style .gm-style-iw {
+	background-color: #E040FB
+} */
+
+.pothole_status.inspected {background-color: aqua;}
+
+
+.zero{
+	border: white
+}
+.red{
+	border: 5px solid red;
+}
+
+.blue{
+	border: 5px solid blue;
+}
+
+.green{
+	border: 5px solid green;
 }
 
 </style>
