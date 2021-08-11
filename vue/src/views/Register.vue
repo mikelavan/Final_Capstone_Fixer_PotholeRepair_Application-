@@ -197,7 +197,7 @@ export default {
   border-radius: 1.5em;
   z-index: 0;
   padding-bottom: 20px;
-  height: 130vh;
+  height: 140vh;
 }
 
 

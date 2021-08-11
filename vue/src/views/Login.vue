@@ -123,7 +123,7 @@ export default {
   background-color: #FDF5E6;
   border-radius: 1.5em;
   z-index: 0;
-  height: 110vh;
+  height: 120vh;
 }
 
 h1 {
