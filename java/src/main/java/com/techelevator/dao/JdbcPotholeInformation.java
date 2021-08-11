@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -91,9 +92,11 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
 
     @Override
     public void updatePicture(MultipartFile file, int id) throws IOException {
-        SqlLobValue data = new SqlLobValue(file.getBytes());
+        SqlLobValue data = new SqlLobValue( file.getBytes());
+        Object[] pothole = new Object[] { data };
+        int[] types = new int[] { Types.BLOB };
         String sql = "UPDATE pothole_information SET picture = ? WHERE id = ?";
 
-        jdbcTemplate.update(sql, data, id);
+        jdbcTemplate.update(sql, pothole, types, id);
     }
 }

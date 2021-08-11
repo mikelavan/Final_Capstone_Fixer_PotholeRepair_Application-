@@ -1,7 +1,7 @@
 <template>
     <div id="report">
         test
-        <input type="file" id="file"  ref="fileInput" />'
+        <input type="file" id="file"  ref="fileInput" />
         <button type="submit" v-on:click="submitPicture()">Submit</button>
     </div>
 </template>
@@ -10,13 +10,12 @@
 import PotholeService from '../services/PotholeService'
 export default {    
     data: () => ({
-        file: this.$refs.fileInput.files[0],
         potholeId: this.$route.params.id,
     }),
     methods: {
         submitPicture() {
             let formData  = new FormData();
-            formData.append('file', this.file);
+            formData.append('file', this.$refs.fileInput.files[0]);
 
 
                 const options = {
@@ -32,7 +31,7 @@ export default {
         
 
 
-				PotholeService.submitPicture(formData, options, this.potholeId).then(response => {
+				PotholeService.submitPicture(formData, options, this.$route.params.id).then(response => {
                     if (response.status === 200) {
                         alert("Picture Submitted");
                     }
