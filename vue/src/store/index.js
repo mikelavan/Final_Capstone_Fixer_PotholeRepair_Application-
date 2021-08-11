@@ -23,6 +23,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     potholes: [],
     newReport: {},
+    images: [],
     linkIsActive: {
       home: true,
       create: false,
@@ -78,5 +79,8 @@ export default new Vuex.Store({
     SET_POTHOLES(state, potholes) {
       state.potholes = potholes
     },
+    LIST_IMAGES(state, images) {
+      state.images = images
+    }
   }
 })

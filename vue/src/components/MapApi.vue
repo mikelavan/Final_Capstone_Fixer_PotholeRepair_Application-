@@ -166,6 +166,14 @@
 					console.log(error.response.status);
 				}
 			});
+			
+			PotholeService.getImages().then( response => {
+				this.$store.commit("LIST_IMAGES", response.data);
+			}).catch(error => {
+				if(error.response.status == 400) {
+					console.log(error.response.status);
+				}
+			});
 
 			
 		},

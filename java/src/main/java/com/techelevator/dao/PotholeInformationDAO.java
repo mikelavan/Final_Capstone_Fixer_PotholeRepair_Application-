@@ -16,4 +16,6 @@ public interface PotholeInformationDAO {
     void updateSeverity(PotholeInformation pothole);
 
     void updatePicture(MultipartFile file, int id) throws IOException;
+
+    String listImages();
 }

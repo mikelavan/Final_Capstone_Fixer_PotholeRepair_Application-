@@ -4,18 +4,22 @@ import com.techelevator.model.PotholeInformation;
 import com.techelevator.model.Schedule;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.support.SqlLobValue;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 
 @Component
-public class JdbcPotholeInformation implements PotholeInformationDAO {
+public class JdbcPotholeInformation implements PotholeInformationDAO, ResultSetExtractor<String> {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -93,10 +97,27 @@ public class JdbcPotholeInformation implements PotholeInformationDAO {
     @Override
     public void updatePicture(MultipartFile file, int id) throws IOException {
         SqlLobValue data = new SqlLobValue( file.getBytes());
-        Object[] pothole = new Object[] { data };
-        int[] types = new int[] { Types.BLOB };
+        Object[] pothole = new Object[] { data, id };
+        int[] types = new int[] { Types.BLOB, Types.INTEGER };
         String sql = "UPDATE pothole_information SET picture = ? WHERE id = ?";
 
-        jdbcTemplate.update(sql, pothole, types, id);
+        jdbcTemplate.update(sql, pothole, types);
+    }
+
+    @Override
+    public String listImages() {
+        String sql = "SELECT id, picture FROM pothole_information";
+
+        return jdbcTemplate.query(sql, new JdbcPotholeInformation(jdbcTemplate));
+    }
+
+    @Override
+    public String extractData(ResultSet resultSet) throws SQLException, DataAccessException {
+        if(resultSet.next()) {
+            byte[] imageData = resultSet.getBytes("picture");
+
+            return Base64.getEncoder().encodeToString(imageData);
+        }
+        return null;
     }
 }

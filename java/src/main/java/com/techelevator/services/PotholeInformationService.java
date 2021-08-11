@@ -32,4 +32,5 @@ public class PotholeInformationService {
         potholeInformation.updatePicture(file, id);
     }
 
+    public String listImages() { return potholeInformation.listImages(); }
 }

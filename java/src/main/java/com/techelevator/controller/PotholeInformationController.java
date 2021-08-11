@@ -53,4 +53,9 @@ public class PotholeInformationController {
     public void updatePicture(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
         potholeService.updatePicture(file, id);
     }
+
+//    @RequestMapping(path="/potholes/list", method = RequestMethod.GET)
+//    public String listImages() {
+//        return potholeService.listImages();
+//    }
 }
