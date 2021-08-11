@@ -10,7 +10,7 @@
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
-					Severity:<b>{{marker.severity}}</b><br>
+					Severity:<b> Not Inspected</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
 					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
