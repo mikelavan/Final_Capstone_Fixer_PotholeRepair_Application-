@@ -6,8 +6,8 @@
 				<map-marker  :lat="marker.latitude" :lng="marker.longitude"></map-marker>
 
 				<map-info-window v-if="marker.severity == 0" class='zero' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
-					<img v-bind:src="marker.picture" width="100%" height="160" /><br>
+					<!-- <img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/> -->
+					<img v-if="marker.picture !==null" v-bind:src="marker.picture" width="100%" height="160" /><br>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
@@ -24,8 +24,8 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 5" class='five' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
-					<img v-bind:src="marker.picture" width="100%" height="160" /><br>
+					<!-- <img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/> -->
+					<img v-if="marker.picture !==null" v-bind:src="marker.picture" width="100%" height="160" /><br>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
@@ -42,8 +42,8 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 4" class='four' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
-					<img v-bind:src="marker.picture" width="100%" height="160" /><br>
+					<!-- <img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/> -->
+					<img v-if="marker.picture !==null" v-bind:src="marker.picture" width="100%" height="160" /><br>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
@@ -60,8 +60,8 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 3" class='three' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
-					<img v-bind:src="marker.picture" width="100%" height="160" /><br>
+					<!-- <img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/> -->
+					<img v-if="marker.picture !==null" v-bind:src="marker.picture" width="100%" height="160" /><br>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
@@ -78,8 +78,8 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 2" class='two' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
-					<img v-bind:src="marker.picture" width="100%" height="160" /><br>
+					<!-- <img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/> -->
+					<img v-if="marker.picture !==null" v-bind:src="marker.picture" width="100%" height="160" /><br>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
@@ -96,8 +96,8 @@
 				</map-info-window>
 
 				<map-info-window v-if="marker.severity == 1" class='one' :lat="marker.latitude + .00001" :lng="marker.longitude">
-					<img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/>
-					<img v-bind:src="marker.picture" width="100%" height="160" /><br>
+					<!-- <img src="../../assets/pothole_sample.jpg" width="100%" height="160"/><br/> -->
+					<img v-if="marker.picture !==null" v-bind:src="marker.picture" width="100%" height="160" /><br>
 					Date Reported: {{marker.dateCreated}}<br>
 					Pothole ID: {{marker.potholeId}}<br>
 					Current Status: {{marker.status}}<br>
