@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.support.SqlLobValue;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import javax.xml.bind.DatatypeConverter;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -58,7 +59,11 @@ public class JdbcPotholeInformation implements PotholeInformationDAO, ResultSetE
                 p.setLatitude(rs.getDouble(4));
                 p.setSeverity(rs.getInt(5));
                 p.setStatus(rs.getString(6));
-                p.setPicture(rs.getString(7));
+//                byte[] picture = rs.getBytes(7);
+//                Base64.Encoder encoder =  Base64.getEncoder();
+//                String picture = encoder.encodeToString(rs.getBytes(7));
+//                p.setPicture(rs.getBytes(7).decode);
+
                 return p;
             }
         });
