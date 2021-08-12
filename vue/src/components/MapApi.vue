@@ -14,7 +14,6 @@
 					Severity:<b> Not Inspected</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
-					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
 					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
 						<button v-show="checkLoggedIn()">Submit Claim</button>
                     </router-link>
@@ -32,7 +31,6 @@
 					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
-					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
 					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
 						<button v-show="checkLoggedIn()">Submit Claim</button>
                     </router-link>
@@ -50,7 +48,6 @@
 					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
-					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
 					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
 						<button v-show="checkLoggedIn()">Submit Claim</button>
                     </router-link>
@@ -68,7 +65,6 @@
 					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
-					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
 					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
 						<button v-show="checkLoggedIn()">Submit Claim</button>
                     </router-link>
@@ -86,7 +82,6 @@
 					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
-					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
 					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
 						<button v-show="checkLoggedIn()">Submit Claim</button>
                     </router-link>
@@ -104,7 +99,6 @@
 					Severity: <b>{{marker.severity}}</b><br>
 					<button v-on:click="deletePothole(marker.potholeId)" id="deleteBtn" 
 					v-show="checkUser()">Delete</button>
-					<button v-on:click="schedule(marker.potholeId)" v-show="checkUser()">Schedule</button>
 					<router-link v-bind:to="{ name: 'claim', params: { id: marker.potholeId }}">
 						<button v-show="checkLoggedIn()">Submit Claim</button>
                     </router-link>
@@ -237,7 +231,6 @@
 			})
 			},
 			getLocation() {
-				alert('works');
 				navigator.geolocation.getCurrentPosition(position => {
 					console.log('test');
 					this.currentPosition = {
@@ -441,7 +434,6 @@
 			}
 			infoWindow.open(this.map);
 			this.map.addListener('click', (event) => {
-				alert('click');
 				infoWindow.close();
 				let loc = JSON.stringify(event.latLng.toJSON());
 				//changes JSON to array to access and save in dummy var
