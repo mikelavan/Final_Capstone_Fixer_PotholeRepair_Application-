@@ -42,7 +42,7 @@ export default{
     },
 
     submitPicture(formData, options, id) {
-        axios.put(`/potholes/${id}`, formData, options);
+        return axios.put(`/potholes/${id}`, formData, options);
     },
 
     getImages() {
