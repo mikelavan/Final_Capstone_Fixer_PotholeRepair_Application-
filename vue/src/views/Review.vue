@@ -214,6 +214,7 @@ export default {
  @media  only screen and (max-width: 767px) {
      .review {
          display: grid;
+         grid-template-columns: 1fr;
          align-items: center;
          top: 9vh;
          padding-top: 40px;
