@@ -189,11 +189,12 @@ export default {
 
 .potholePicture {
     display: flex;
-    width: 50%;
+    justify-content: center;
+    /* width: 50%; */
     height: 160px;
     padding-top: 6%;
-    padding-right: 20%; 
-    padding-left: 10%; 
+    /* padding-right: 20%; 
+    padding-left: 10%;  */
     
 }
 
@@ -229,11 +230,12 @@ export default {
  
     .potholePicture {
     display: flex;
+    justify-content: center;
     width: 100%;
     height: 160px;
     padding-top: 6%;
-    padding-right: 20%; 
-    padding-left: 10%; 
+    padding-right: 20px; 
+    /* padding-left: 10%;  */
     
 }
  
