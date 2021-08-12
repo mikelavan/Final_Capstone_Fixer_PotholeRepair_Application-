@@ -1,8 +1,7 @@
 <template>
     <div id="report">
-        test
-        <input type="file" id="file"  ref="fileInput" />
-        <button type="submit" v-on:click="submitPicture()">Submit</button>
+        <input class="pictureFile" type="file" id="file"  ref="fileInput" />
+        <button class="pictureSubmit" type="submit" v-on:click="submitPicture()">Submit</button>
     </div>
 </template>
 
@@ -55,7 +54,45 @@ export default {
 
 <style>
 #report {
-    margin-top:  10vh;
+    position: fixed;
     padding: 5%;
+    background-color: #FDF5E6;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.pictureSubmit {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  font-size: 18px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  height: 6%;
+  width: 25%;
+  margin-top: 5%;
+}
+
+.pictureFile {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+@media  only screen and (max-width: 766px) {
+
+.pictureFile {
+    display: flex;
+    justify-content: center;
+    margin-top: 35%;
+}
+
+
+}
+
 </style>
