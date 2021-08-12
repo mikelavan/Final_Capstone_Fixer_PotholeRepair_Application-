@@ -55,8 +55,8 @@ public class PotholeInformationController {
         potholeService.updatePicture(file, id);
     }
 
-//    @RequestMapping(path="/potholes/list", method = RequestMethod.GET)
-//    public String listImages() {
-//        return potholeService.listImages();
-//    }
+    @RequestMapping(path="/potholes/list", method = RequestMethod.GET)
+    public String listImages() {
+        return potholeService.listImages();
+    }
 }
