@@ -1,5 +1,6 @@
 <template>
     <div id="report">
+        <h1 class="potholePhotoUpload">Upload Pothole Photo</h1>
         <input class="pictureFile" type="file" id="file"  ref="fileInput" />
         <button class="pictureSubmit" type="submit" v-on:click="submitPicture()">Submit</button>
     </div>
@@ -85,12 +86,23 @@ export default {
     margin-top: 5%;
 }
 
+.potholePhotoUpload {
+    display: flex;
+    color: #8C55AA;
+    font-family: 'Raleway', sans-serif;
+    justify-content: center;
+
+
+
+}
+
 @media  only screen and (max-width: 766px) {
 
 .pictureFile {
     display: flex;
     justify-content: center;
     margin-top: 35%;
+    font-style:
 }
 
 
