@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import com.techelevator.model.PotholeInformation;
 import com.techelevator.model.Schedule;
 import org.springframework.dao.DataAccessException;
@@ -63,7 +64,10 @@ public class JdbcPotholeInformation implements PotholeInformationDAO, ResultSetE
                     byte[] picture = rs.getBytes(7);
 
                     String pictureString = Base64.getEncoder().encodeToString(picture);
-                    p.setPicture("data:image/jpg;base64, " + pictureString);
+
+                    String type  = detectType(pictureString);
+
+                    p.setPicture("data:" + type + ";base64, " + pictureString);
                 }
 
                 return p;
@@ -141,6 +145,18 @@ public class JdbcPotholeInformation implements PotholeInformationDAO, ResultSetE
             byte[] imageData = resultSet.getBytes("picture");
 
             return Base64.getEncoder().encodeToString(imageData);
+        }
+        return null;
+    }
+
+    public String detectType(String b64) {
+        if(b64.indexOf("/9j/") == 0) {
+            System.out.println("true");
+            return "image/jpg";
+        }
+        if(b64.indexOf("iVBORw0KGgo") == 0) {
+            System.out.println("PNG");
+            return "image/png";
         }
         return null;
     }

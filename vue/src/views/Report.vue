@@ -16,34 +16,13 @@ export default {
         submitPicture() {
             let formData  = new FormData();
             formData.append('file', this.$refs.fileInput.files[0]);
-
-
                 const options = {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 }
-
-
-
-                // console.log(schedule);
-
-        
-
-
-				PotholeService.submitPicture(formData, options, this.$route.params.id).then(response => {
-                    if (response.status === 200) {
-                        alert("Picture Submitted");
-                    }
-			}).catch(error => {
-				if(error.response) {
-					console.log('Error submitting new report.');
-				} else if (error.request) {
-					console.log("Error submitting new board. Server could not be reached.");
-				} else {
-					console.log("Error submitting new board. Request could not be created.");
-				}
-			})
+				PotholeService.submitPicture(formData, options, this.$route.params.id);
+                this.$router.push("/");
             }
 
         },

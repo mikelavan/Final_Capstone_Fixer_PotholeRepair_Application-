@@ -8,6 +8,7 @@
             <li>Pothole ID: {{ potholes.potholeId }}</li>
             <li>Severity: {{ potholes.severity }}</li>
             <li>Current Status: {{ potholes.status }}</li>
+            <img v-bind:src="potholes.picture" width="100%" height="160"/>
             <form>
                 <select v-model="potholes.status">
                     <option v-show="potholes.status != 'Scheduled'">Scheduled</option>
