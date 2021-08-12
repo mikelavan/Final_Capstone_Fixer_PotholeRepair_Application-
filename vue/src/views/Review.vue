@@ -219,7 +219,6 @@ export default {
          top: 9vh;
          padding-top: 40px;
         width: 100vh;
-        height: 160%;
      }
  
      #info {
