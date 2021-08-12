@@ -160,6 +160,9 @@ export default {
 }
 
 @media only screen and (max-width: 3440px) {
+    body {
+        overflow-x: hidden;
+    }
     #date {
     justify-items: end;
 }
@@ -189,13 +192,11 @@ export default {
  }
 
 .potholePicture {
-    display: flex;
-    justify-content: center;
     /* width: 50%; */
     height: 160px;
     padding-top: 6%;
-    /* padding-right: 20%; 
-    padding-left: 10%;  */
+    padding-right:  20%;
+    /* padding-left: 10%;  */
     
 }
 
