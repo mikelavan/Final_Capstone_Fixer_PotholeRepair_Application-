@@ -77,17 +77,12 @@ a.router-link-exact-active {
   border-radius: 10pt;
   padding-bottom: 5px;
   padding-top: 5px;
-  /* height: 20px; */
-  /*font-weight: bold; */
 }
 
   ul#nav-links li {
     color: white;
   }
 
-/* .activeLink {
-  color:blue !important;
-} */
 
 body {
  margin: 0px;
@@ -121,15 +116,10 @@ nav {
   }
 
 nav {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #DDA0DD;
-    min-height: 8vh;
     width: 100vw;
     position: fixed;
-    z-index: 2;
 }
   ul#nav-links {
     display: flex;
@@ -157,7 +147,6 @@ nav {
   }
 
   ul#nav-links a:hover {
-    /* background-color: #F7BAF7; */
     text-decoration: underline;
   }
 

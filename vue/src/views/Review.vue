@@ -8,7 +8,6 @@
             <li>Pothole ID: {{ potholes.potholeId }}</li>
             <li>Severity: {{ potholes.severity }}</li>
             <li>Current Status: {{ potholes.status }}</li>
-            <img v-if="potholes.picture" v-bind:src="potholes.picture" width="100%" height="160"/>
             <form>
                 <select v-model="potholes.status">
                     <option v-show="potholes.status != 'Scheduled'">Scheduled</option>
@@ -28,14 +27,12 @@
                 </select>
                 <button v-on:click.prevent="updateSchedule(potholes.status, potholes.severity, potholes)" >Submit New Status</button>
                 <button v-on:click.prevent="deletePothole(potholes.potholeId)" v-if="potholes.status == 'Repaired'">Delete Repaired Pothole?</button>
-                <hr>
-                <hr id="vert">
             </form>
             <form v-if="changeToInspected">
                 
             </form> 
         </ul>
-        
+        <img class="potholePicture" v-if="potholes.picture" v-bind:src="potholes.picture"/>
     </div>
     
   </div>
@@ -161,45 +158,120 @@ export default {
     margin-top: 5%;
 }
 
+@media only screen and (max-width: 3440px) {
+    #date {
+    justify-items: end;
+}
+.review {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    top: 8vh;
+    font-family: 'Raleway', sans-serif;
+    background-color: #FDF5E6;
+    width: 100%;
+    min-height: 100vh; 
+}
+
+
+#info {
+    margin-top: 5%;
+    width: 100%;
+}
+
+
+
 #potholesReview {
     display: flex;
-    /* justify-content: space-evenly; */
-    /* align-content: space-evenly; */
+    width: 100%; 
+ }
 
+.potholePicture {
+    display: flex;
+    width: 50%;
+    height: 160px;
+    padding-top: 6%;
+    padding-right: 20%; 
+    padding-left: 10%; 
+    
+}
+
+#potholesReview {
+    display: flex;
+    width: 100vh;
+}
 
 }
-@media  only screen and (max-width: 767px) {
+
+
+
+
+
+
+
+
+ @media  only screen and (max-width: 767px) {
+     .review {
+         display: grid;
+         align-items: center;
+         top: 9vh;
+         padding-top: 40px;
+        width: 100vh;
+        height: 160%;
+     }
+ 
+     #info {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 5%;
+    }
+ 
+    .potholePicture {
+    display: flex;
+    width: 100%;
+    height: 160px;
+    padding-top: 6%;
+    padding-right: 20%; 
+    padding-left: 10%; 
+    
+}
+ 
+ }
+ 
+ 
+ @media  only screen and (max-width: 320px) {
+ 
     .review {
         display: grid;
         grid-template-columns: 1fr ;
         align-items: center;
         top: 9vh;
         padding-top: 40px;
-        width: 70vh;
-    }
-
+        width: 100vh;
+        height: 175vh;
+     }
+ 
+.potholePicture{
+    display: flex;
+    width: 100%;
+    height: 160px;
+    padding-top: 6%;
+    padding-right: 20%; 
+    padding-left: 10%; 
+    
+ }
     #info {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-top: 5%;
-
-
-}
-
-
-
-@media  only screen and (max-width: 320px) {
-
-.review {
-        top: 10vh;
-        width: 145%;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 5%;
     }
 
-hr {
-    /* width: 95%; */
-}
 
-}
-}
+
+ 
+ }
+
+
 
 </style>
