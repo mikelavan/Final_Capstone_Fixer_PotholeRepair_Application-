@@ -371,7 +371,7 @@
 			locationButton.classList.add("custom-map-control-button");
 			this.map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(locationButton);
 			locationButton.style.fontSize = "20px";
-			locationButton.style.marginTop = "14vh";
+			locationButton.style.marginTop = "18vh";
 			locationButton.style.padding = "5px";
 			locationButton.style.boxShadow = "0 2px 6px rgba(0, 0, 0, .3)";
 			locationButton.style.textAlign = "center";
