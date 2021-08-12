@@ -231,7 +231,6 @@
 			})
 			},
 			getLocation() {
-				alert('works');
 				navigator.geolocation.getCurrentPosition(position => {
 					console.log('test');
 					this.currentPosition = {
@@ -435,7 +434,6 @@
 			}
 			infoWindow.open(this.map);
 			this.map.addListener('click', (event) => {
-				alert('click');
 				infoWindow.close();
 				let loc = JSON.stringify(event.latLng.toJSON());
 				//changes JSON to array to access and save in dummy var
