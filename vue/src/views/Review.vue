@@ -89,6 +89,7 @@ export default {
 				PotholeService.updateSchedule(schedule).then(response => {
                     if (response.status === 200) {
                         alert("Status Submitted");
+                        location.reload();
                     }
 				console.log(schedule)
 			}).catch(error => {
